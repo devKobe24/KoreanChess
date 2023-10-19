@@ -8,6 +8,7 @@
 enum ImageAssets {
     case background
     case field
+    case greenSideSolider
     
     var image: String {
         switch self {
@@ -15,6 +16,8 @@ enum ImageAssets {
             return "bg"
         case .field:
             return "field"
+        case .greenSideSolider:
+            return "Green_Zol"
         }
     }
 }
