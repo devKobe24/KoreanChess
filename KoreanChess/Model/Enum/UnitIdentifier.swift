@@ -16,6 +16,10 @@ enum UnitIdentifier {
     case rightSideGreenVehicle
     case leftSideRedVehicle
     case rightSideRedVehicel
+    case leftSideGreenElephant
+    case rightSideGreenElephant
+    case leftSideRedElephant
+    case rightSideRedElephant
     
     var name: String {
         switch self {
@@ -39,6 +43,14 @@ enum UnitIdentifier {
             return "cha_r1"
         case .rightSideRedVehicel:
             return "cha_r2"
+        case .leftSideGreenElephant:
+            return "sang_g1"
+        case .rightSideGreenElephant:
+            return "sang_g2"
+        case .leftSideRedElephant:
+            return "sang_r1"
+        case .rightSideRedElephant:
+            return "sang_r2"
         }
     }
 }

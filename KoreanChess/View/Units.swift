@@ -30,6 +30,12 @@ final class Units {
         
         configureLeftRedSideVehicle()
         configureRightRedSideVehicle()
+        
+        configureLeftGreenElephant()
+        configureRightGreenElephant()
+        
+        configureLeftRedElephant()
+        configureRightRedElephant()
     }
 }
 // MARK: - 졸
@@ -174,6 +180,60 @@ extension Units {
         ) { [weak self] rightRedSideCha in
             guard let self = self else { return }
             self.setupUnit(with: rightRedSideCha)
+        }
+    }
+}
+
+// MARK: - 파란색 상
+extension Units {
+    private func configureLeftGreenElephant() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 1, y: 9),
+            unitName: UnitIdentifier.leftSideGreenElephant.name,
+            tag: 1,
+            unitImageName: UnitImageAssets.greenSideElephant.image
+        ) { [weak self] leftGreenSideElephant in
+            guard let self = self else { return }
+            self.setupUnit(with: leftGreenSideElephant)
+        }
+    }
+    
+    private func configureRightGreenElephant() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 7, y: 9),
+            unitName: UnitIdentifier.rightSideGreenElephant.name,
+            tag: 1,
+            unitImageName: UnitImageAssets.greenSideElephant.image
+        ) { [weak self] rightGreenSideElephant in
+            guard let self = self else { return }
+            self.setupUnit(with: rightGreenSideElephant)
+        }
+    }
+}
+
+// MARK: - 빨간색 상
+extension Units {
+    private func configureLeftRedElephant() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 1, y: 0),
+            unitName: UnitIdentifier.leftSideRedElephant.name,
+            tag: 2,
+            unitImageName: UnitImageAssets.redSideElephant.image
+        ) { [weak self] leftRedSideElephant in
+            guard let self = self else { return }
+            self.setupUnit(with: leftRedSideElephant)
+        }
+    }
+    
+    private func configureRightRedElephant() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 7, y: 0),
+            unitName: UnitIdentifier.rightSideRedElephant.name,
+            tag: 2,
+            unitImageName: UnitImageAssets.redSideElephant.image
+        ) { [weak self] rightRedSideElephant in
+            guard let self = self else { return }
+            self.setupUnit(with: rightRedSideElephant)
         }
     }
 }
