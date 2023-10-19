@@ -7,7 +7,24 @@
 
 import SpriteKit
 
-extension Units: Initializerable {
+extension Units: Initializerable, UnitConfigurable {
+    func configureUnit(
+        unitPosition: CGPoint,
+        unitName: String,
+        tag: Int,
+        unitImageName: String,
+        completion: @escaping (GameUnit) -> Void
+    ) {
+        let unit = GameUnit(
+            unitPosition: unitPosition,
+            unitName: unitName,
+            tag: tag,
+            unitImageName: unitImageName
+        )
+        
+        completion(unit)
+    }
+    
     func setupUnit(with gameUnit: GameUnit) {
         Variables.allUnits.append(gameUnit)
         

@@ -24,22 +24,31 @@ final class Units {
         
         configureLeftRedSideCannonUnit()
         configureRightRedSideCannonUnit()
+        
+        configureLeftGreenSideVehicle()
+        configureRightGreenSideVehicle()
+        
+        configureLeftRedSideVehicle()
+        configureRightRedSideVehicle()
     }
 }
-
+// MARK: - 졸
 extension Units {
+    
     private func configureGreenSideSoldierUnit() {
         for soldierPosition in fieldColumRange {
             if soldierPosition % 2 == 0 {
                 soldierID += 1
                 
-                let greenSideSoldierUnit = GameUnit(
+                self.configureUnit(
                     unitPosition: CGPoint(x: soldierPosition, y: 6),
                     unitName: UnitIdentifier.greenSideSolider.name+"\(soldierID)",
                     tag: 1,
                     unitImageName: UnitImageAssets.greenSideSolider.image
-                )
-                self.setupUnit(with: greenSideSoldierUnit)
+                ) { [weak self] greenSideSoldierUnit in
+                    guard let self = self else { return }
+                    self.setupUnit(with: greenSideSoldierUnit)
+                }
             }
         }
     }
@@ -49,70 +58,122 @@ extension Units {
             if soldierPosition % 2 == 0 {
                 soldierID += 1
                 
-                let redSideSolierUnit = GameUnit(
+                self.configureUnit(
                     unitPosition: CGPoint(x: soldierPosition, y: 3),
                     unitName: UnitIdentifier.redSideSolider.name+"\(soldierID)",
                     tag: 2,
                     unitImageName: UnitImageAssets.redSideSolider.image
-                )
-                self.setupUnit(with: redSideSolierUnit)
+                ) { [weak self] redSideSoldierUnit in
+                    guard let self = self else { return }
+                    self.setupUnit(with: redSideSoldierUnit)
+                }
             }
         }
     }
 }
-
+// MARK: - 파란색 포
 extension Units {
     private func configureLeftGreenSideCannonUnit() {
-        let leftGreenCannonUnitPosition = CGPoint(x: 1, y: 7)
-
-        let leftSideGreenCannonUnit = GameUnit(
-            unitPosition: leftGreenCannonUnitPosition,
+        self.configureUnit(
+            unitPosition: CGPoint(x: 1, y: 7),
             unitName: UnitIdentifier.leftSideGreenCannon.name,
             tag: 1,
             unitImageName: UnitImageAssets.greenSideCannon.image
-        )
-        
-        self.setupUnit(with: leftSideGreenCannonUnit)
+        ) { [weak self] leftSideGreenCannonUnit in
+            guard let self = self else { return }
+            self.setupUnit(with: leftSideGreenCannonUnit)
+        }
     }
     
     private func configureRightGreenSideCannonUnit() {
-        let rightGreenCannonUnitPosition = CGPoint(x: 7, y: 7)
-        
-        let rightGreenSideCannonUnit = GameUnit(
-            unitPosition: rightGreenCannonUnitPosition,
+        self.configureUnit(
+            unitPosition: CGPoint(x: 7, y: 7),
             unitName: UnitIdentifier.rightSideGreenCannon.name,
             tag: 1,
             unitImageName: UnitImageAssets.greenSideCannon.image
-        )
-        
-        self.setupUnit(with: rightGreenSideCannonUnit)
+        ) { [weak self] rightGreenSideCannonUnit in
+            guard let self = self else { return }
+            self.setupUnit(with: rightGreenSideCannonUnit)
+        }
     }
 }
-
+// MARK: - 빨간색 포
 extension Units {
     private func configureLeftRedSideCannonUnit() {
-        let leftRedCannonUnitPosition = CGPoint(x: 1, y: 2)
-        
-        let leftRedSideCannonUnit = GameUnit(
-            unitPosition: leftRedCannonUnitPosition,
+        self.configureUnit(
+            unitPosition: CGPoint(x: 1, y: 2),
             unitName: UnitIdentifier.leftSideRedCannon.name,
             tag: 2,
             unitImageName: UnitImageAssets.redSideCannon.image
-        )
-        
-        self.setupUnit(with: leftRedSideCannonUnit)
+        ) { [weak self] leftRedSideCannonUnit in
+            guard let self = self else { return }
+            self.setupUnit(with: leftRedSideCannonUnit)
+        }
     }
     
     private func configureRightRedSideCannonUnit() {
-        let rightRedCannonUnitPosition = CGPoint(x: 7, y: 2)
-        
-        let rightRedSideCannonUnit = GameUnit(
-            unitPosition: rightRedCannonUnitPosition,
+        self.configureUnit(
+            unitPosition: CGPoint(x: 7, y: 2),
             unitName: UnitIdentifier.rightSideRedCannon.name,
             tag: 2,
             unitImageName: UnitImageAssets.redSideCannon.image
-        )
-        
-        self.setupUnit(with: rightRedSideCannonUnit)
+        ) { [weak self] rightRedSideCannonUnit in
+            guard let self = self else { return }
+            self.setupUnit(with: rightRedSideCannonUnit)
+        }
+    }
+}
+
+// MARK: - 파란색 차
+extension Units {
+    private func configureLeftGreenSideVehicle() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 0, y: 9),
+            unitName: UnitIdentifier.leftSideGreenVehicle.name,
+            tag: 1,
+            unitImageName: UnitImageAssets.greenSideCha.image
+        ) { [weak self] leftGreenSideCha in
+            guard let self = self else { return }
+            self.setupUnit(with: leftGreenSideCha)
+        }
+    }
+    
+    private func configureRightGreenSideVehicle() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 8, y: 9),
+            unitName: UnitIdentifier.rightSideGreenVehicle.name,
+            tag: 1,
+            unitImageName: UnitImageAssets.greenSideCha.image
+        ) { [weak self] rightGreenSideCha in
+            guard let self = self else { return }
+            self.setupUnit(with: rightGreenSideCha)
+        }
+    }
+}
+
+// MARK: - 빨간색 차
+extension Units {
+    private func configureLeftRedSideVehicle() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 0, y: 0),
+            unitName: UnitIdentifier.leftSideRedVehicle.name,
+            tag: 2,
+            unitImageName: UnitImageAssets.redSideCha.image
+        ) { [weak self] leftRedSideCha in
+            guard let self = self else { return }
+            self.setupUnit(with: leftRedSideCha)
+        }
+    }
+    
+    private func configureRightRedSideVehicle() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 8, y: 0),
+            unitName: UnitIdentifier.rightSideRedVehicel.name,
+            tag: 2,
+            unitImageName: UnitImageAssets.redSideCha.image
+        ) { [weak self] rightRedSideCha in
+            guard let self = self else { return }
+            self.setupUnit(with: rightRedSideCha)
+        }
     }
 }

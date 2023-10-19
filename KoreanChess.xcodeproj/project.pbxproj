@@ -15,6 +15,7 @@
 		CD3D6FED2AE0E01C003998A0 /* Initializerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3D6FEC2AE0E01C003998A0 /* Initializerable.swift */; };
 		CD3D6FF12AE0E262003998A0 /* GameUnitMakerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3D6FF02AE0E262003998A0 /* GameUnitMakerable.swift */; };
 		CD3D6FF32AE0E61A003998A0 /* BackgroundImageAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3D6FF22AE0E61A003998A0 /* BackgroundImageAssets.swift */; };
+		CD3D6FF72AE10466003998A0 /* UnitConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3D6FF62AE10466003998A0 /* UnitConfigurable.swift */; };
 		CDD961EC2ACBBDF900AECA1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD961EB2ACBBDF900AECA1E /* AppDelegate.swift */; };
 		CDD961F22ACBBDF900AECA1E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD961F12ACBBDF900AECA1E /* GameScene.swift */; };
 		CDD961F42ACBBDF900AECA1E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD961F32ACBBDF900AECA1E /* GameViewController.swift */; };
@@ -54,6 +55,7 @@
 		CD3D6FEC2AE0E01C003998A0 /* Initializerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initializerable.swift; sourceTree = "<group>"; };
 		CD3D6FF02AE0E262003998A0 /* GameUnitMakerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUnitMakerable.swift; sourceTree = "<group>"; };
 		CD3D6FF22AE0E61A003998A0 /* BackgroundImageAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageAssets.swift; sourceTree = "<group>"; };
+		CD3D6FF62AE10466003998A0 /* UnitConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConfigurable.swift; sourceTree = "<group>"; };
 		CDD961E82ACBBDF900AECA1E /* KoreanChess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KoreanChess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD961EB2ACBBDF900AECA1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDD961F12ACBBDF900AECA1E /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		CD3D6FE62AE0DE11003998A0 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				CD3D6FF42AE10425003998A0 /* UnitConfigurable */,
 				CD3D6FEE2AE0E238003998A0 /* GameUnitMakerable */,
 				CD3D6FE72AE0DF67003998A0 /* Initializerable */,
 			);
@@ -198,6 +201,22 @@
 			isa = PBXGroup;
 			children = (
 				CD3D6FF02AE0E262003998A0 /* GameUnitMakerable.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		CD3D6FF42AE10425003998A0 /* UnitConfigurable */ = {
+			isa = PBXGroup;
+			children = (
+				CD3D6FF52AE10436003998A0 /* Interface */,
+			);
+			path = UnitConfigurable;
+			sourceTree = "<group>";
+		};
+		CD3D6FF52AE10436003998A0 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				CD3D6FF62AE10466003998A0 /* UnitConfigurable.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -394,6 +413,7 @@
 				CD3D6FF12AE0E262003998A0 /* GameUnitMakerable.swift in Sources */,
 				CDD961EC2ACBBDF900AECA1E /* AppDelegate.swift in Sources */,
 				CDD962212ACBC0B300AECA1E /* Variables.swift in Sources */,
+				CD3D6FF72AE10466003998A0 /* UnitConfigurable.swift in Sources */,
 				CD3D6FE52AE0DCE2003998A0 /* Units+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
