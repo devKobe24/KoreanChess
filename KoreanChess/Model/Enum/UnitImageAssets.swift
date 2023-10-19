@@ -14,6 +14,8 @@ enum UnitImageAssets {
     case redSideCha
     case greenSideElephant
     case redSideElephant
+    case greenSideHorse
+    case redSideHorse
     
     var image: String {
         switch self {
@@ -32,6 +34,10 @@ enum UnitImageAssets {
         case .greenSideElephant:
             return "Green_Sang"
         case .redSideElephant:
+            return "Red_Sang"
+        case .greenSideHorse:
+            return "Green_Sang"
+        case .redSideHorse:
             return "Red_Sang"
         }
     }

@@ -36,6 +36,12 @@ final class Units {
         
         configureLeftRedElephant()
         configureRightRedElephant()
+        
+        configureLeftGreenHorse()
+        configureRightGreenHorse()
+        
+        configureLeftRedHorse()
+        configureRightRedHorse()
     }
 }
 // MARK: - 졸
@@ -234,6 +240,60 @@ extension Units {
         ) { [weak self] rightRedSideElephant in
             guard let self = self else { return }
             self.setupUnit(with: rightRedSideElephant)
+        }
+    }
+}
+
+// MARK: - 파란색 마
+extension Units {
+    private func configureLeftGreenHorse() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 2, y: 9),
+            unitName: UnitIdentifier.leftSideGreenHorse.name,
+            tag: 1,
+            unitImageName: UnitImageAssets.greenSideHorse.image
+        ) { [weak self] leftGreenSideHorse in
+            guard let self = self else { return }
+            self.setupUnit(with: leftGreenSideHorse)
+        }
+    }
+    
+    private func configureRightGreenHorse() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 6, y: 9),
+            unitName: UnitIdentifier.rightSideGreenHorse.name,
+            tag: 1,
+            unitImageName: UnitImageAssets.greenSideHorse.image
+        ) { [weak self] rightGreenSideHorse in
+            guard let self = self else { return }
+            self.setupUnit(with: rightGreenSideHorse)
+        }
+    }
+}
+
+// MARK: - 빨간색 마
+extension Units {
+    private func configureLeftRedHorse() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 2, y: 0),
+            unitName: UnitIdentifier.leftSideRedHorse.name,
+            tag: 2,
+            unitImageName: UnitImageAssets.redSideHorse.image
+        ) { [weak self] leftRedSideHorse in
+            guard let self = self else { return }
+            self.setupUnit(with: leftRedSideHorse)
+        }
+    }
+    
+    private func configureRightRedHorse() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 6, y: 0),
+            unitName: UnitIdentifier.rightSideRedHorse.name,
+            tag: 2,
+            unitImageName: UnitImageAssets.redSideHorse.image
+        ) { [weak self] rightRedSideHorse in
+            guard let self = self else { return }
+            self.setupUnit(with: rightRedSideHorse)
         }
     }
 }
