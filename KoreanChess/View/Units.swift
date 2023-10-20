@@ -13,38 +13,49 @@ final class Units {
     let fieldColumRange = (0...8)
     
     init() {
+        // MARK: - background
         configureBackgroundImage()
         configureGameFieldImage()
-        
+        // MARK: - 졸
         configureGreenSideSoldierUnit()
         configureRedSideSoldierUnit()
-        
+        // MARK: - 파란색 포
         configureLeftGreenSideCannonUnit()
         configureRightGreenSideCannonUnit()
-        
+        // MARK: - 빨간색 포
         configureLeftRedSideCannonUnit()
         configureRightRedSideCannonUnit()
-        
+        // MARK: - 파란색 차
         configureLeftGreenSideVehicle()
         configureRightGreenSideVehicle()
-        
+        // MARK: - 빨간색 차
         configureLeftRedSideVehicle()
         configureRightRedSideVehicle()
-        
+        // MARK: - 파란색 상
         configureLeftGreenElephant()
         configureRightGreenElephant()
-        
+        // MARK: - 빨간생 상
         configureLeftRedElephant()
         configureRightRedElephant()
-        
+        // MARK: - 파란색 마
         configureLeftGreenHorse()
         configureRightGreenHorse()
-        
+        // MARK: - 빨간색 마
         configureLeftRedHorse()
         configureRightRedHorse()
+        // MARK: - 파란색 사
+        configureLeftGreenStaff()
+        configureRightGreenStaff()
+        // MARK: - 빨간색 사
+        configureLeftRedStaff()
+        configureRightRedStaff()
+        // MARK: - 파란색 왕
+        configureGreenKing()
+        // MARK: - 빨간색 왕
+        configureRedKing()
     }
 }
-// MARK: - 졸
+// MARK: - 졸 구성 및 구현
 extension Units {
     
     private func configureGreenSideSoldierUnit() {
@@ -83,7 +94,7 @@ extension Units {
         }
     }
 }
-// MARK: - 파란색 포
+// MARK: - 파란색 포 구성 및 구현
 extension Units {
     private func configureLeftGreenSideCannonUnit() {
         self.configureUnit(
@@ -109,7 +120,7 @@ extension Units {
         }
     }
 }
-// MARK: - 빨간색 포
+// MARK: - 빨간색 포 구성 및 구현
 extension Units {
     private func configureLeftRedSideCannonUnit() {
         self.configureUnit(
@@ -136,7 +147,7 @@ extension Units {
     }
 }
 
-// MARK: - 파란색 차
+// MARK: - 파란색 차 구성 및 구현
 extension Units {
     private func configureLeftGreenSideVehicle() {
         self.configureUnit(
@@ -163,7 +174,7 @@ extension Units {
     }
 }
 
-// MARK: - 빨간색 차
+// MARK: - 빨간색 차 구성 및 구현
 extension Units {
     private func configureLeftRedSideVehicle() {
         self.configureUnit(
@@ -190,7 +201,7 @@ extension Units {
     }
 }
 
-// MARK: - 파란색 상
+// MARK: - 파란색 상 구성 및 구현
 extension Units {
     private func configureLeftGreenElephant() {
         self.configureUnit(
@@ -217,7 +228,7 @@ extension Units {
     }
 }
 
-// MARK: - 빨간색 상
+// MARK: - 빨간색 상 구성 및 구현
 extension Units {
     private func configureLeftRedElephant() {
         self.configureUnit(
@@ -244,7 +255,7 @@ extension Units {
     }
 }
 
-// MARK: - 파란색 마
+// MARK: - 파란색 마 구성 및 구현
 extension Units {
     private func configureLeftGreenHorse() {
         self.configureUnit(
@@ -271,7 +282,7 @@ extension Units {
     }
 }
 
-// MARK: - 빨간색 마
+// MARK: - 빨간색 마 구성 및 구현
 extension Units {
     private func configureLeftRedHorse() {
         self.configureUnit(
@@ -294,6 +305,90 @@ extension Units {
         ) { [weak self] rightRedSideHorse in
             guard let self = self else { return }
             self.setupUnit(with: rightRedSideHorse)
+        }
+    }
+}
+
+// MARK: - 파란색 사 구성 및 구현
+extension Units {
+    private func configureLeftGreenStaff() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 3, y: 9),
+            unitName: UnitIdentifier.leftSideGreenStaff.name,
+            tag: 1,
+            unitImageName: UnitImageAssets.greenSideStaff.image
+        ) { [weak self] leftGreenSideStaff in
+            guard let self = self else { return }
+            self.setupUnit(with: leftGreenSideStaff)
+        }
+    }
+    
+    private func configureRightGreenStaff() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 5, y: 9),
+            unitName: UnitIdentifier.rightSideGreenStaff.name,
+            tag: 1,
+            unitImageName: UnitImageAssets.greenSideStaff.image
+        ) { [weak self] rightGreenSideStaff in
+            guard let self = self else { return }
+            self.setupUnit(with: rightGreenSideStaff)
+        }
+    }
+}
+
+// MARK: - 빨간색 사 구성 및 구현
+extension Units {
+    private func configureLeftRedStaff() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 3, y: 0),
+            unitName: UnitIdentifier.leftSideRedStaff.name,
+            tag: 2,
+            unitImageName: UnitImageAssets.redSideStaff.image
+        ) { [weak self] leftRedSideStaff in
+            guard let self = self else { return }
+            self.setupUnit(with: leftRedSideStaff)
+        }
+    }
+    
+    private func configureRightRedStaff() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 5, y: 0),
+            unitName: UnitIdentifier.rightSideRedStaff.name,
+            tag: 2,
+            unitImageName: UnitImageAssets.redSideStaff.image
+        ) { [weak self] leftRedSideStaff in
+            guard let self = self else { return }
+            self.setupUnit(with: leftRedSideStaff)
+        }
+    }
+}
+
+// MARK: - 파란색 왕 구성 및 구현
+extension Units {
+    private func configureGreenKing() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 4, y: 8),
+            unitName: UnitIdentifier.greenKing.name,
+            tag: 1,
+            unitImageName: UnitImageAssets.greenKing.image
+        ) { [weak self] greenKing in
+            guard let self = self else { return }
+            self.setupUnit(with: greenKing)
+        }
+    }
+}
+
+// MARK: - 빨간색 왕 구성 및 구현
+extension Units {
+    private func configureRedKing() {
+        self.configureUnit(
+            unitPosition: CGPoint(x: 4, y: 1),
+            unitName: UnitIdentifier.redKing.name,
+            tag: 2,
+            unitImageName: UnitImageAssets.redKing.image
+        ) { [weak self] redKing in
+            guard let self = self else { return }
+            self.setupUnit(with: redKing)
         }
     }
 }
