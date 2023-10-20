@@ -36,15 +36,15 @@ extension Units: Initializerable, UnitConfigurable {
             let unitXposition = Int(unit.unitPosition.x)
             let unitYposition = Int(unit.unitPosition.y)
             
-            guard let startXposition = Variables.startX else { return }
-            guard let startYposition = Variables.startY else { return }
+            guard let startXposition = Position.startX.value else { return }
+            guard let startYposition = Position.startY.value else { return }
             
-            guard let unitSpacing = Variables.unitSpacing else { return }
+            guard let unitSpacing = Position.unitSpacing.value else { return }
             
             let xPosition = (startXposition + (unitSpacing * unitXposition))
             let yPosition = (startYposition - (unitSpacing * unitYposition))
             
-            guard let nodeWidthAndHeight = Variables.unitSpacing else { return }
+            guard let nodeWidthAndHeight = Position.unitSpacing.value else { return }
             
             unitNode.position = CGPoint(x: xPosition, y: yPosition)
             unitNode.size = CGSize(width: nodeWidthAndHeight, height: nodeWidthAndHeight)
@@ -74,8 +74,8 @@ extension Units: Initializerable, UnitConfigurable {
     func configureGameFieldImage() {
         let gameFieldImage = SKSpriteNode(imageNamed: BackgroundImageAssets.field.image)
         
-        guard let spacing = Variables.unitSpacing else { return }
-        guard let startYposition = Variables.startY else { return }
+        guard let spacing = Position.unitSpacing.value else { return }
+        guard let startYposition = Position.startY.value else { return }
         let width = spacing * FieldMetrix.row.value
         let height = spacing * FieldMetrix.column.value
         let xPosition = (spacing / 2)
