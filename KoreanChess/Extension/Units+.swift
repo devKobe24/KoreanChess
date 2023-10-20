@@ -76,8 +76,8 @@ extension Units: Initializerable, UnitConfigurable {
         
         guard let spacing = Variables.unitSpacing else { return }
         guard let startYposition = Variables.startY else { return }
-        let width = spacing * Variables.row
-        let height = spacing * Variables.column
+        let width = spacing * FieldMetrix.row.value
+        let height = spacing * FieldMetrix.column.value
         let xPosition = (spacing / 2)
         let yPosition = (startYposition + (spacing / 2))
         

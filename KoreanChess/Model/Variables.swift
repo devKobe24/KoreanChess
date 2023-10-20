@@ -10,13 +10,12 @@ import SpriteKit
 
 struct Variables {
     static var scene = SKScene()
-    /// 가로
-    static let row = 9
-    /// 세로
-    static let column = 10
+//    /// 가로
+//    static let row = 9
+//    /// 세로
+//    static let column = 10
     /// 장기알 간격
     static let unitSpacing = spacing()
-    
     /// x 시작점
     static let startX = spacing()
     /// y 시작점
@@ -30,7 +29,7 @@ private func setupStartYposition() -> Int? {
     let viewHeight = view.frame.height
     guard let spacing = Variables.unitSpacing else { return nil }
     let negativeHalfViewHeight = -(viewHeight / 2)
-    let startYposition = Int(negativeHalfViewHeight) + (spacing * Variables.column / 2)
+    let startYposition = Int(negativeHalfViewHeight) + (spacing * FieldMetrix.column.value / 2)
     
     return startYposition
 }
@@ -38,7 +37,7 @@ private func setupStartYposition() -> Int? {
 private func spacing() -> Int? {
     guard let view = Variables.scene.view else { return nil }
     let viewWidth = view.frame.width
-    let spacing = Int(viewWidth) / Variables.column
+    let spacing = Int(viewWidth) / FieldMetrix.column.value
     
     return spacing
 }

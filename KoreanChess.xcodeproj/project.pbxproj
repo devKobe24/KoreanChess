@@ -16,6 +16,7 @@
 		CD3D6FF12AE0E262003998A0 /* GameUnitMakerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3D6FF02AE0E262003998A0 /* GameUnitMakerable.swift */; };
 		CD3D6FF32AE0E61A003998A0 /* BackgroundImageAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3D6FF22AE0E61A003998A0 /* BackgroundImageAssets.swift */; };
 		CD3D6FF72AE10466003998A0 /* UnitConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3D6FF62AE10466003998A0 /* UnitConfigurable.swift */; };
+		CD7F64652AE23E230064B605 /* FieldMetrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F64642AE23E230064B605 /* FieldMetrix.swift */; };
 		CDD961EC2ACBBDF900AECA1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD961EB2ACBBDF900AECA1E /* AppDelegate.swift */; };
 		CDD961F22ACBBDF900AECA1E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD961F12ACBBDF900AECA1E /* GameScene.swift */; };
 		CDD961F42ACBBDF900AECA1E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD961F32ACBBDF900AECA1E /* GameViewController.swift */; };
@@ -56,6 +57,7 @@
 		CD3D6FF02AE0E262003998A0 /* GameUnitMakerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUnitMakerable.swift; sourceTree = "<group>"; };
 		CD3D6FF22AE0E61A003998A0 /* BackgroundImageAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageAssets.swift; sourceTree = "<group>"; };
 		CD3D6FF62AE10466003998A0 /* UnitConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConfigurable.swift; sourceTree = "<group>"; };
+		CD7F64642AE23E230064B605 /* FieldMetrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldMetrix.swift; sourceTree = "<group>"; };
 		CDD961E82ACBBDF900AECA1E /* KoreanChess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KoreanChess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD961EB2ACBBDF900AECA1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDD961F12ACBBDF900AECA1E /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				CD3D6FD82AE0871E003998A0 /* UnitImageAssets.swift */,
 				CD3D6FDD2AE08A32003998A0 /* NodeName.swift */,
 				CD3D6FE12AE0AD50003998A0 /* UnitIdentifier.swift */,
+				CD7F64642AE23E230064B605 /* FieldMetrix.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDD961F22ACBBDF900AECA1E /* GameScene.swift in Sources */,
+				CD7F64652AE23E230064B605 /* FieldMetrix.swift in Sources */,
 				CDD9621F2ACBC05100AECA1E /* Units.swift in Sources */,
 				CD3D6FD92AE0871E003998A0 /* UnitImageAssets.swift in Sources */,
 				CD3D6FE02AE0A35F003998A0 /* GameUnit.swift in Sources */,
