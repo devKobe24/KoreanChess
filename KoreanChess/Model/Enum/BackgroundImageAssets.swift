@@ -1,11 +1,11 @@
 //
-//  ImageAssets.swift
+//  BackgroundImageAssets.swift
 //  KoreanChess
 //
 //  Created by Minseong Kang on 10/19/23.
 //
 
-enum ImageAssets {
+enum BackgroundImageAssets {
     case background
     case field
     
