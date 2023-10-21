@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD0973502AE28BCB00195EDC /* GuideBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD09734F2AE28BCB00195EDC /* GuideBlock.swift */; };
+		CD0973522AE28D6C00195EDC /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0973512AE28D6C00195EDC /* Size.swift */; };
+		CD0973542AE31A8200195EDC /* BlockSideType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0973532AE31A8200195EDC /* BlockSideType.swift */; };
+		CD0973562AE31B7000195EDC /* GuideBlockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0973552AE31B7000195EDC /* GuideBlockType.swift */; };
+		CD0973582AE326F400195EDC /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0973572AE326F400195EDC /* Direction.swift */; };
+		CD09735C2AE327CA00195EDC /* Directioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD09735B2AE327CA00195EDC /* Directioning.swift */; };
+		CD0973612AE32F8400195EDC /* TankUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0973602AE32F8400195EDC /* TankUnit.swift */; };
 		CD3D6FD92AE0871E003998A0 /* UnitImageAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3D6FD82AE0871E003998A0 /* UnitImageAssets.swift */; };
 		CD3D6FDE2AE08A32003998A0 /* NodeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3D6FDD2AE08A32003998A0 /* NodeName.swift */; };
 		CD3D6FE02AE0A35F003998A0 /* GameUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3D6FDF2AE0A35F003998A0 /* GameUnit.swift */; };
@@ -50,6 +57,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD09734F2AE28BCB00195EDC /* GuideBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideBlock.swift; sourceTree = "<group>"; };
+		CD0973512AE28D6C00195EDC /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
+		CD0973532AE31A8200195EDC /* BlockSideType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockSideType.swift; sourceTree = "<group>"; };
+		CD0973552AE31B7000195EDC /* GuideBlockType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideBlockType.swift; sourceTree = "<group>"; };
+		CD0973572AE326F400195EDC /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		CD09735B2AE327CA00195EDC /* Directioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Directioning.swift; sourceTree = "<group>"; };
+		CD0973602AE32F8400195EDC /* TankUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TankUnit.swift; sourceTree = "<group>"; };
 		CD3D6FD82AE0871E003998A0 /* UnitImageAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitImageAssets.swift; sourceTree = "<group>"; };
 		CD3D6FDD2AE08A32003998A0 /* NodeName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeName.swift; sourceTree = "<group>"; };
 		CD3D6FDF2AE0A35F003998A0 /* GameUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUnit.swift; sourceTree = "<group>"; };
@@ -103,12 +117,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD0973592AE327A300195EDC /* Directioning */ = {
+			isa = PBXGroup;
+			children = (
+				CD09735A2AE327B500195EDC /* Interface */,
+			);
+			path = Directioning;
+			sourceTree = "<group>";
+		};
+		CD09735A2AE327B500195EDC /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				CD09735B2AE327CA00195EDC /* Directioning.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		CD09735D2AE32DCB00195EDC /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CD09735F2AE32E0400195EDC /* Units */,
+				CDD961F12ACBBDF900AECA1E /* GameScene.swift */,
+				CDD9621E2ACBC05100AECA1E /* Units.swift */,
+				CD09734F2AE28BCB00195EDC /* GuideBlock.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		CD09735E2AE32DE900195EDC /* Sub */ = {
+			isa = PBXGroup;
+			children = (
+				CDD961F52ACBBDF900AECA1E /* Main.storyboard */,
+				CDD961FA2ACBBDFA00AECA1E /* LaunchScreen.storyboard */,
+			);
+			path = Sub;
+			sourceTree = "<group>";
+		};
+		CD09735F2AE32E0400195EDC /* Units */ = {
+			isa = PBXGroup;
+			children = (
+				CD0973602AE32F8400195EDC /* TankUnit.swift */,
+			);
+			path = Units;
+			sourceTree = "<group>";
+		};
 		CD3D6FD62AE086FA003998A0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				CD3D6FE62AE0DE11003998A0 /* Protocol */,
 				CDD962202ACBC0B300AECA1E /* Variables.swift */,
 				CD3D6FDF2AE0A35F003998A0 /* GameUnit.swift */,
+				CD0973572AE326F400195EDC /* Direction.swift */,
 				CD3D6FD72AE08708003998A0 /* Enum */,
 			);
 			path = Model;
@@ -124,6 +183,9 @@
 				CD3D6FE12AE0AD50003998A0 /* UnitIdentifier.swift */,
 				CD7F64642AE23E230064B605 /* FieldMetrix.swift */,
 				CD7F64662AE240170064B605 /* Position.swift */,
+				CD0973512AE28D6C00195EDC /* Size.swift */,
+				CD0973532AE31A8200195EDC /* BlockSideType.swift */,
+				CD0973552AE31B7000195EDC /* GuideBlockType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -131,10 +193,8 @@
 		CD3D6FDA2AE087BA003998A0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CDD961F52ACBBDF900AECA1E /* Main.storyboard */,
-				CDD961FA2ACBBDFA00AECA1E /* LaunchScreen.storyboard */,
-				CDD961F12ACBBDF900AECA1E /* GameScene.swift */,
-				CDD9621E2ACBC05100AECA1E /* Units.swift */,
+				CD09735D2AE32DCB00195EDC /* Core */,
+				CD09735E2AE32DE900195EDC /* Sub */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -167,6 +227,7 @@
 		CD3D6FE62AE0DE11003998A0 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				CD0973592AE327A300195EDC /* Directioning */,
 				CD3D6FF42AE10425003998A0 /* UnitConfigurable */,
 				CD3D6FEE2AE0E238003998A0 /* GameUnitMakerable */,
 				CD3D6FE72AE0DF67003998A0 /* Initializerable */,
@@ -422,17 +483,24 @@
 				CD7F64652AE23E230064B605 /* FieldMetrix.swift in Sources */,
 				CDD9621F2ACBC05100AECA1E /* Units.swift in Sources */,
 				CD3D6FD92AE0871E003998A0 /* UnitImageAssets.swift in Sources */,
+				CD0973542AE31A8200195EDC /* BlockSideType.swift in Sources */,
+				CD0973502AE28BCB00195EDC /* GuideBlock.swift in Sources */,
 				CD3D6FE02AE0A35F003998A0 /* GameUnit.swift in Sources */,
+				CD0973612AE32F8400195EDC /* TankUnit.swift in Sources */,
 				CD3D6FE22AE0AD50003998A0 /* UnitIdentifier.swift in Sources */,
 				CDD961F42ACBBDF900AECA1E /* GameViewController.swift in Sources */,
 				CD3D6FED2AE0E01C003998A0 /* Initializerable.swift in Sources */,
 				CD7F646A2AE248FB0064B605 /* Unwrapping.swift in Sources */,
+				CD0973522AE28D6C00195EDC /* Size.swift in Sources */,
 				CD3D6FF32AE0E61A003998A0 /* BackgroundImageAssets.swift in Sources */,
+				CD0973562AE31B7000195EDC /* GuideBlockType.swift in Sources */,
 				CD3D6FDE2AE08A32003998A0 /* NodeName.swift in Sources */,
 				CD3D6FF12AE0E262003998A0 /* GameUnitMakerable.swift in Sources */,
 				CDD961EC2ACBBDF900AECA1E /* AppDelegate.swift in Sources */,
+				CD0973582AE326F400195EDC /* Direction.swift in Sources */,
 				CDD962212ACBC0B300AECA1E /* Variables.swift in Sources */,
 				CD3D6FF72AE10466003998A0 /* UnitConfigurable.swift in Sources */,
+				CD09735C2AE327CA00195EDC /* Directioning.swift in Sources */,
 				CD7F64672AE240170064B605 /* Position.swift in Sources */,
 				CD3D6FE52AE0DCE2003998A0 /* Units+.swift in Sources */,
 			);

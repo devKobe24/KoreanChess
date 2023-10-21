@@ -26,8 +26,8 @@ final class Units {
         configureLeftRedSideCannonUnit()
         configureRightRedSideCannonUnit()
         // MARK: - 파란색 차
-        configureLeftGreenSideVehicle()
-        configureRightGreenSideVehicle()
+        configureLeftGreenSideTank()
+        configureRightGreenSideTank()
         // MARK: - 빨간색 차
         configureLeftRedSideVehicle()
         configureRightRedSideVehicle()
@@ -65,9 +65,9 @@ extension Units {
                 
                 self.configureUnit(
                     unitPosition: CGPoint(x: soldierPosition, y: 6),
-                    unitName: UnitIdentifier.greenSideSolider.name+"\(soldierID)",
+                    unitId: UnitIdentifier.greenSideSolider.id+"\(soldierID)",
                     tag: 1,
-                    unitImageName: UnitImageAssets.greenSideSolider.image
+                    unitImageName: UnitImageAssets.greenSideSolider.imageName
                 ) { [weak self] greenSideSoldierUnit in
                     guard let self = self else { return }
                     self.setupUnit(with: greenSideSoldierUnit)
@@ -83,9 +83,9 @@ extension Units {
                 
                 self.configureUnit(
                     unitPosition: CGPoint(x: soldierPosition, y: 3),
-                    unitName: UnitIdentifier.redSideSolider.name+"\(soldierID)",
+                    unitId: UnitIdentifier.redSideSolider.id+"\(soldierID)",
                     tag: 2,
-                    unitImageName: UnitImageAssets.redSideSolider.image
+                    unitImageName: UnitImageAssets.redSideSolider.imageName
                 ) { [weak self] redSideSoldierUnit in
                     guard let self = self else { return }
                     self.setupUnit(with: redSideSoldierUnit)
@@ -99,9 +99,9 @@ extension Units {
     private func configureLeftGreenSideCannonUnit() {
         self.configureUnit(
             unitPosition: CGPoint(x: 1, y: 7),
-            unitName: UnitIdentifier.leftSideGreenCannon.name,
+            unitId: UnitIdentifier.leftSideGreenCannon.id,
             tag: 1,
-            unitImageName: UnitImageAssets.greenSideCannon.image
+            unitImageName: UnitImageAssets.greenSideCannon.imageName
         ) { [weak self] leftSideGreenCannonUnit in
             guard let self = self else { return }
             self.setupUnit(with: leftSideGreenCannonUnit)
@@ -111,9 +111,9 @@ extension Units {
     private func configureRightGreenSideCannonUnit() {
         self.configureUnit(
             unitPosition: CGPoint(x: 7, y: 7),
-            unitName: UnitIdentifier.rightSideGreenCannon.name,
+            unitId: UnitIdentifier.rightSideGreenCannon.id,
             tag: 1,
-            unitImageName: UnitImageAssets.greenSideCannon.image
+            unitImageName: UnitImageAssets.greenSideCannon.imageName
         ) { [weak self] rightGreenSideCannonUnit in
             guard let self = self else { return }
             self.setupUnit(with: rightGreenSideCannonUnit)
@@ -125,21 +125,30 @@ extension Units {
     private func configureLeftRedSideCannonUnit() {
         self.configureUnit(
             unitPosition: CGPoint(x: 1, y: 2),
-            unitName: UnitIdentifier.leftSideRedCannon.name,
+            unitId: UnitIdentifier.leftSideRedCannon.id,
             tag: 2,
-            unitImageName: UnitImageAssets.redSideCannon.image
+            unitImageName: UnitImageAssets.redSideCannon.imageName
         ) { [weak self] leftRedSideCannonUnit in
             guard let self = self else { return }
             self.setupUnit(with: leftRedSideCannonUnit)
         }
+        
+        self.configureDirection(
+            unitPosition: CGPoint(x: 1, y: 2),
+            unitId: UnitIdentifier.leftSideRedCannon.id,
+            tag: 2
+        ) { [weak self] direction in
+                guard let self = self else { return }
+                self.setupDirection(target: direction)
+            }
     }
     
     private func configureRightRedSideCannonUnit() {
         self.configureUnit(
             unitPosition: CGPoint(x: 7, y: 2),
-            unitName: UnitIdentifier.rightSideRedCannon.name,
+            unitId: UnitIdentifier.rightSideRedCannon.id,
             tag: 2,
-            unitImageName: UnitImageAssets.redSideCannon.image
+            unitImageName: UnitImageAssets.redSideCannon.imageName
         ) { [weak self] rightRedSideCannonUnit in
             guard let self = self else { return }
             self.setupUnit(with: rightRedSideCannonUnit)
@@ -149,27 +158,35 @@ extension Units {
 
 // MARK: - 파란색 차 구성 및 구현
 extension Units {
-    private func configureLeftGreenSideVehicle() {
+    private func configureLeftGreenSideTank() {
         self.configureUnit(
             unitPosition: CGPoint(x: 0, y: 9),
-            unitName: UnitIdentifier.leftSideGreenVehicle.name,
+            unitId: UnitIdentifier.leftSideGreenTank.id,
             tag: 1,
-            unitImageName: UnitImageAssets.greenSideCha.image
-        ) { [weak self] leftGreenSideCha in
+            unitImageName: UnitImageAssets.greenSideTank.imageName
+        ) { [weak self] gameUnit in
             guard let self = self else { return }
-            self.setupUnit(with: leftGreenSideCha)
+            self.setupUnit(with: gameUnit)
         }
+        
+        self.configureDirection(
+            unitPosition: CGPoint(x: 0, y: 9),
+            unitId: UnitIdentifier.leftSideGreenTank.id,
+            tag: 1) { [weak self] direction in
+                guard let self = self else { return }
+                self.setupDirection(target: direction)
+            }
     }
     
-    private func configureRightGreenSideVehicle() {
+    private func configureRightGreenSideTank() {
         self.configureUnit(
             unitPosition: CGPoint(x: 8, y: 9),
-            unitName: UnitIdentifier.rightSideGreenVehicle.name,
+            unitId: UnitIdentifier.rightSideRedTank.id,
             tag: 1,
-            unitImageName: UnitImageAssets.greenSideCha.image
-        ) { [weak self] rightGreenSideCha in
+            unitImageName: UnitImageAssets.greenSideTank.imageName
+        ) { [weak self] gameUnit in
             guard let self = self else { return }
-            self.setupUnit(with: rightGreenSideCha)
+            self.setupUnit(with: gameUnit)
         }
     }
 }
@@ -179,9 +196,9 @@ extension Units {
     private func configureLeftRedSideVehicle() {
         self.configureUnit(
             unitPosition: CGPoint(x: 0, y: 0),
-            unitName: UnitIdentifier.leftSideRedVehicle.name,
+            unitId: UnitIdentifier.leftSideRedTank.id,
             tag: 2,
-            unitImageName: UnitImageAssets.redSideCha.image
+            unitImageName: UnitImageAssets.redSideTank.imageName
         ) { [weak self] leftRedSideCha in
             guard let self = self else { return }
             self.setupUnit(with: leftRedSideCha)
@@ -191,9 +208,9 @@ extension Units {
     private func configureRightRedSideVehicle() {
         self.configureUnit(
             unitPosition: CGPoint(x: 8, y: 0),
-            unitName: UnitIdentifier.rightSideRedVehicel.name,
+            unitId: UnitIdentifier.rightSideRedTank.id,
             tag: 2,
-            unitImageName: UnitImageAssets.redSideCha.image
+            unitImageName: UnitImageAssets.redSideTank.imageName
         ) { [weak self] rightRedSideCha in
             guard let self = self else { return }
             self.setupUnit(with: rightRedSideCha)
@@ -206,9 +223,9 @@ extension Units {
     private func configureLeftGreenElephant() {
         self.configureUnit(
             unitPosition: CGPoint(x: 1, y: 9),
-            unitName: UnitIdentifier.leftSideGreenElephant.name,
+            unitId: UnitIdentifier.leftSideGreenElephant.id,
             tag: 1,
-            unitImageName: UnitImageAssets.greenSideElephant.image
+            unitImageName: UnitImageAssets.greenSideElephant.imageName
         ) { [weak self] leftGreenSideElephant in
             guard let self = self else { return }
             self.setupUnit(with: leftGreenSideElephant)
@@ -218,9 +235,9 @@ extension Units {
     private func configureRightGreenElephant() {
         self.configureUnit(
             unitPosition: CGPoint(x: 7, y: 9),
-            unitName: UnitIdentifier.rightSideGreenElephant.name,
+            unitId: UnitIdentifier.rightSideGreenElephant.id,
             tag: 1,
-            unitImageName: UnitImageAssets.greenSideElephant.image
+            unitImageName: UnitImageAssets.greenSideElephant.imageName
         ) { [weak self] rightGreenSideElephant in
             guard let self = self else { return }
             self.setupUnit(with: rightGreenSideElephant)
@@ -233,9 +250,9 @@ extension Units {
     private func configureLeftRedElephant() {
         self.configureUnit(
             unitPosition: CGPoint(x: 1, y: 0),
-            unitName: UnitIdentifier.leftSideRedElephant.name,
+            unitId: UnitIdentifier.leftSideRedElephant.id,
             tag: 2,
-            unitImageName: UnitImageAssets.redSideElephant.image
+            unitImageName: UnitImageAssets.redSideElephant.imageName
         ) { [weak self] leftRedSideElephant in
             guard let self = self else { return }
             self.setupUnit(with: leftRedSideElephant)
@@ -245,9 +262,9 @@ extension Units {
     private func configureRightRedElephant() {
         self.configureUnit(
             unitPosition: CGPoint(x: 7, y: 0),
-            unitName: UnitIdentifier.rightSideRedElephant.name,
+            unitId: UnitIdentifier.rightSideRedElephant.id,
             tag: 2,
-            unitImageName: UnitImageAssets.redSideElephant.image
+            unitImageName: UnitImageAssets.redSideElephant.imageName
         ) { [weak self] rightRedSideElephant in
             guard let self = self else { return }
             self.setupUnit(with: rightRedSideElephant)
@@ -260,9 +277,9 @@ extension Units {
     private func configureLeftGreenHorse() {
         self.configureUnit(
             unitPosition: CGPoint(x: 2, y: 9),
-            unitName: UnitIdentifier.leftSideGreenHorse.name,
+            unitId: UnitIdentifier.leftSideGreenHorse.id,
             tag: 1,
-            unitImageName: UnitImageAssets.greenSideHorse.image
+            unitImageName: UnitImageAssets.greenSideHorse.imageName
         ) { [weak self] leftGreenSideHorse in
             guard let self = self else { return }
             self.setupUnit(with: leftGreenSideHorse)
@@ -272,9 +289,9 @@ extension Units {
     private func configureRightGreenHorse() {
         self.configureUnit(
             unitPosition: CGPoint(x: 6, y: 9),
-            unitName: UnitIdentifier.rightSideGreenHorse.name,
+            unitId: UnitIdentifier.rightSideGreenHorse.id,
             tag: 1,
-            unitImageName: UnitImageAssets.greenSideHorse.image
+            unitImageName: UnitImageAssets.greenSideHorse.imageName
         ) { [weak self] rightGreenSideHorse in
             guard let self = self else { return }
             self.setupUnit(with: rightGreenSideHorse)
@@ -287,9 +304,9 @@ extension Units {
     private func configureLeftRedHorse() {
         self.configureUnit(
             unitPosition: CGPoint(x: 2, y: 0),
-            unitName: UnitIdentifier.leftSideRedHorse.name,
+            unitId: UnitIdentifier.leftSideRedHorse.id,
             tag: 2,
-            unitImageName: UnitImageAssets.redSideHorse.image
+            unitImageName: UnitImageAssets.redSideHorse.imageName
         ) { [weak self] leftRedSideHorse in
             guard let self = self else { return }
             self.setupUnit(with: leftRedSideHorse)
@@ -299,9 +316,9 @@ extension Units {
     private func configureRightRedHorse() {
         self.configureUnit(
             unitPosition: CGPoint(x: 6, y: 0),
-            unitName: UnitIdentifier.rightSideRedHorse.name,
+            unitId: UnitIdentifier.rightSideRedHorse.id,
             tag: 2,
-            unitImageName: UnitImageAssets.redSideHorse.image
+            unitImageName: UnitImageAssets.redSideHorse.imageName
         ) { [weak self] rightRedSideHorse in
             guard let self = self else { return }
             self.setupUnit(with: rightRedSideHorse)
@@ -314,9 +331,9 @@ extension Units {
     private func configureLeftGreenStaff() {
         self.configureUnit(
             unitPosition: CGPoint(x: 3, y: 9),
-            unitName: UnitIdentifier.leftSideGreenStaff.name,
+            unitId: UnitIdentifier.leftSideGreenStaff.id,
             tag: 1,
-            unitImageName: UnitImageAssets.greenSideStaff.image
+            unitImageName: UnitImageAssets.greenSideStaff.imageName
         ) { [weak self] leftGreenSideStaff in
             guard let self = self else { return }
             self.setupUnit(with: leftGreenSideStaff)
@@ -326,9 +343,9 @@ extension Units {
     private func configureRightGreenStaff() {
         self.configureUnit(
             unitPosition: CGPoint(x: 5, y: 9),
-            unitName: UnitIdentifier.rightSideGreenStaff.name,
+            unitId: UnitIdentifier.rightSideGreenStaff.id,
             tag: 1,
-            unitImageName: UnitImageAssets.greenSideStaff.image
+            unitImageName: UnitImageAssets.greenSideStaff.imageName
         ) { [weak self] rightGreenSideStaff in
             guard let self = self else { return }
             self.setupUnit(with: rightGreenSideStaff)
@@ -341,9 +358,9 @@ extension Units {
     private func configureLeftRedStaff() {
         self.configureUnit(
             unitPosition: CGPoint(x: 3, y: 0),
-            unitName: UnitIdentifier.leftSideRedStaff.name,
+            unitId: UnitIdentifier.leftSideRedStaff.id,
             tag: 2,
-            unitImageName: UnitImageAssets.redSideStaff.image
+            unitImageName: UnitImageAssets.redSideStaff.imageName
         ) { [weak self] leftRedSideStaff in
             guard let self = self else { return }
             self.setupUnit(with: leftRedSideStaff)
@@ -353,9 +370,9 @@ extension Units {
     private func configureRightRedStaff() {
         self.configureUnit(
             unitPosition: CGPoint(x: 5, y: 0),
-            unitName: UnitIdentifier.rightSideRedStaff.name,
+            unitId: UnitIdentifier.rightSideRedStaff.id,
             tag: 2,
-            unitImageName: UnitImageAssets.redSideStaff.image
+            unitImageName: UnitImageAssets.redSideStaff.imageName
         ) { [weak self] leftRedSideStaff in
             guard let self = self else { return }
             self.setupUnit(with: leftRedSideStaff)
@@ -368,9 +385,9 @@ extension Units {
     private func configureGreenKing() {
         self.configureUnit(
             unitPosition: CGPoint(x: 4, y: 8),
-            unitName: UnitIdentifier.greenKing.name,
+            unitId: UnitIdentifier.greenKing.id,
             tag: 1,
-            unitImageName: UnitImageAssets.greenKing.image
+            unitImageName: UnitImageAssets.greenKing.imageName
         ) { [weak self] greenKing in
             guard let self = self else { return }
             self.setupUnit(with: greenKing)
@@ -383,9 +400,9 @@ extension Units {
     private func configureRedKing() {
         self.configureUnit(
             unitPosition: CGPoint(x: 4, y: 1),
-            unitName: UnitIdentifier.redKing.name,
+            unitId: UnitIdentifier.redKing.id,
             tag: 2,
-            unitImageName: UnitImageAssets.redKing.image
+            unitImageName: UnitImageAssets.redKing.imageName
         ) { [weak self] redKing in
             guard let self = self else { return }
             self.setupUnit(with: redKing)

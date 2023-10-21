@@ -10,7 +10,7 @@ import Foundation
 protocol UnitConfigurable {
     func configureUnit(
         unitPosition: CGPoint,
-        unitName: String,
+        unitId: String,
         tag: Int,
         unitImageName: String,
         completion: @escaping (GameUnit) -> Void

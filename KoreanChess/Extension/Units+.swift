@@ -10,14 +10,14 @@ import SpriteKit
 extension Units: Initializerable, UnitConfigurable {
     func configureUnit(
         unitPosition: CGPoint,
-        unitName: String,
+        unitId: String,
         tag: Int,
         unitImageName: String,
         completion: @escaping (GameUnit) -> Void
     ) {
         let unit = GameUnit(
             unitPosition: unitPosition,
-            unitName: unitName,
+            unitId: unitId,
             tag: tag,
             unitImageName: unitImageName
         )
@@ -48,11 +48,29 @@ extension Units: Initializerable, UnitConfigurable {
             
             unitNode.position = CGPoint(x: xPosition, y: yPosition)
             unitNode.size = CGSize(width: nodeWidthAndHeight, height: nodeWidthAndHeight)
-            unitNode.name = unit.unitName
+            unitNode.name = unit.unitId
             unitNode.zPosition = 0
             
             Variables.scene.addChild(unitNode)
         }
+    }
+    
+    func configureDirection(
+        unitPosition: CGPoint,
+        unitId: String,
+        tag: Int,
+        completion: @escaping (Direction) -> Void
+    ) {
+        let direction = Direction(
+            unitPosition: unitPosition,
+            unitId: unitId,
+            tag: tag
+        )
+        completion(direction)
+    }
+    
+    func setupDirection(target direction: Direction) {
+        Variables.unitDirections.append(direction)
     }
     
     func configureBackgroundImage() {

@@ -9,7 +9,7 @@ import Foundation
 
 protocol GameUnitMakerable {
     var unitPosition: CGPoint { get set }
-    var unitName: String { get set }
+    var unitId: String { get set }
     var tag: Int { get set }
     var unitImageName: String { get set }
 }

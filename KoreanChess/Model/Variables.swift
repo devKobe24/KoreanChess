@@ -12,4 +12,23 @@ struct Variables {
     static var scene = SKScene()
     
     static var allUnits: [GameUnit] = []
+    
+    static var unitDirections: [Direction] = []
+}
+
+extension Variables {
+    static func getUnitTag(unitDirections: [Direction], unitPosition: CGPoint) -> Int {
+        var unitTag: Int = 0
+
+        for unitDirection in unitDirections {
+            switch unitDirection.unitPosition {
+            case unitPosition:
+                unitTag = unitDirection.tag
+                break
+            default:
+                break
+            }
+        }
+        return unitTag
+    }
 }

@@ -17,14 +17,14 @@ enum Position {
         switch self {
         case .unitSpacing:
             do {
-                let unitSpacing = try spacing()
+                let unitSpacing = try configureSpacing()
                 return unitSpacing
             } catch {
                 Logger().error("\(error.localizedDescription)")
             }
         case .startX:
             do {
-                let startX = try spacing()
+                let startX = try configureSpacing()
                 return startX
             } catch {
                 Logger().error("\(error.localizedDescription)")
@@ -42,7 +42,7 @@ enum Position {
 }
 
 extension Position {
-    private func spacing() throws -> Int {
+    private func configureSpacing() throws -> Int {
         guard let view = Variables.scene.view else {
             throw Unwrapping.view
         }
@@ -63,7 +63,7 @@ extension Position {
         
         let viewHeight = view.frame.height
         
-        let spacing = try self.spacing()
+        let spacing = try self.configureSpacing()
         
         let negativeHalfViewHeight = -(viewHeight / 2)
         
