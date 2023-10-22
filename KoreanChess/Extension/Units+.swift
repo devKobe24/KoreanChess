@@ -8,22 +8,22 @@
 import SpriteKit
 
 extension Units: Initializerable, UnitConfigurable {
-    func configureUnit(
-        unitPosition: CGPoint,
-        unitId: String,
-        tag: Int,
-        unitImageName: String,
-        completion: @escaping (GameUnit) -> Void
-    ) {
-        let unit = GameUnit(
-            unitPosition: unitPosition,
-            unitId: unitId,
-            tag: tag,
-            unitImageName: unitImageName
-        )
-        
-        completion(unit)
-    }
+//    func configureUnit(
+//        unitPosition: CGPoint,
+//        unitId: String,
+//        tag: Int,
+//        unitImageName: String,
+//        completion: @escaping (GameUnit) -> Void
+//    ) {
+//        let unit = GameUnit(
+//            unitPosition: unitPosition,
+//            unitId: unitId,
+//            tag: tag,
+//            unitImageName: unitImageName
+//        )
+//        
+//        completion(unit)
+//    }
     
     func setupUnit(with gameUnit: GameUnit) {
         Variables.allUnits.append(gameUnit)

@@ -40,9 +40,9 @@ enum UnitImageAssets {
         case .redSideElephant:
             return "Red_Sang"
         case .greenSideHorse:
-            return "Green_Sang"
+            return "Green_Ma"
         case .redSideHorse:
-            return "Red_Sang"
+            return "Red_Ma"
         case .greenSideStaff:
             return "Green_Sa"
         case .redSideStaff:

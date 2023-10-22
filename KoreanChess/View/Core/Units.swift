@@ -10,7 +10,9 @@ import SpriteKit
 
 final class Units {
     var soldierID = 0
-    let fieldColumRange = (0...8)
+    let soldierPositionRange = (0...8).filter {
+        $0 % 2 == 0
+    }
     
     init() {
         // MARK: - background
@@ -20,392 +22,470 @@ final class Units {
         configureGreenSideSoldierUnit()
         configureRedSideSoldierUnit()
         // MARK: - 파란색 포
-        configureLeftGreenSideCannonUnit()
-        configureRightGreenSideCannonUnit()
+        setupLeftGreenCannon()
+        setupRightGreenCannon()
         // MARK: - 빨간색 포
-        configureLeftRedSideCannonUnit()
-        configureRightRedSideCannonUnit()
+        setupLeftRedCannon()
+        setupRightRedCannon()
         // MARK: - 파란색 차
-        configureLeftGreenSideTank()
-        configureRightGreenSideTank()
+        setupLeftGreenTank()
+        setupRightGreenTank()
         // MARK: - 빨간색 차
-        configureLeftRedSideVehicle()
-        configureRightRedSideVehicle()
+        setupLeftRedTank()
+        setupRightRedTank()
         // MARK: - 파란색 상
-        configureLeftGreenElephant()
-        configureRightGreenElephant()
-        // MARK: - 빨간생 상
-        configureLeftRedElephant()
-        configureRightRedElephant()
+        setupLeftGreenElephant()
+        setupRightGreenElephant()
+        // MARK: - 빨간색 상
+        setupLeftRedElephant()
+        setupRightRedElephant()
         // MARK: - 파란색 마
-        configureLeftGreenHorse()
-        configureRightGreenHorse()
+        setupLeftGreenHorse()
+        setupRightGreenHorse()
         // MARK: - 빨간색 마
-        configureLeftRedHorse()
-        configureRightRedHorse()
+        setupLeftRedHorse()
+        setupRightRedHorse()
         // MARK: - 파란색 사
-        configureLeftGreenStaff()
-        configureRightGreenStaff()
+        setupLeftGreenStaff()
+        setupRightGreenStaff()
         // MARK: - 빨간색 사
-        configureLeftRedStaff()
-        configureRightRedStaff()
+        setupLeftRedStaff()
+        setupRightRedStaff()
         // MARK: - 파란색 왕
-        configureGreenKing()
+        setupGreenKing()
         // MARK: - 빨간색 왕
-        configureRedKing()
+        setupRedKing()
     }
 }
 // MARK: - 졸 구성 및 구현
 extension Units {
-    
     private func configureGreenSideSoldierUnit() {
-        for soldierPosition in fieldColumRange {
-            if soldierPosition % 2 == 0 {
-                soldierID += 1
-                
-                self.configureUnit(
-                    unitPosition: CGPoint(x: soldierPosition, y: 6),
-                    unitId: UnitIdentifier.greenSideSolider.id+"\(soldierID)",
-                    tag: 1,
-                    unitImageName: UnitImageAssets.greenSideSolider.imageName
-                ) { [weak self] greenSideSoldierUnit in
-                    guard let self = self else { return }
-                    self.setupUnit(with: greenSideSoldierUnit)
-                }
-            }
+        soldierPositionRange.forEach {
+            self.configureUnit(
+                nation: .green,
+                unitPosition: .down(x: $0, y: 6),
+                unitId: .greenSideSolider(soldierID),
+                tag: .green,
+                unitImageName: .greenSideSolider
+            )
         }
     }
     
     private func configureRedSideSoldierUnit() {
-        for soldierPosition in fieldColumRange {
-            if soldierPosition % 2 == 0 {
-                soldierID += 1
-                
-                self.configureUnit(
-                    unitPosition: CGPoint(x: soldierPosition, y: 3),
-                    unitId: UnitIdentifier.redSideSolider.id+"\(soldierID)",
-                    tag: 2,
-                    unitImageName: UnitImageAssets.redSideSolider.imageName
-                ) { [weak self] redSideSoldierUnit in
-                    guard let self = self else { return }
-                    self.setupUnit(with: redSideSoldierUnit)
-                }
-            }
+        soldierPositionRange.forEach {
+            self.configureUnit(
+                nation: .green,
+                unitPosition: .up(x: $0, y: 3),
+                unitId: .redSideSolider(soldierID),
+                tag: .red,
+                unitImageName: .redSideSolider
+            )
         }
     }
 }
-// MARK: - 파란색 포 구성 및 구현
+// MARK: - 포 구성
 extension Units {
-    private func configureLeftGreenSideCannonUnit() {
+    private func configureCannonUnit(
+        nation: Tag,
+        unitPosition: UnitPosition,
+        unitId: UnitIdentifier,
+        tag: Tag,
+        unitImageName: UnitImageAssets
+    ) {
         self.configureUnit(
-            unitPosition: CGPoint(x: 1, y: 7),
-            unitId: UnitIdentifier.leftSideGreenCannon.id,
-            tag: 1,
-            unitImageName: UnitImageAssets.greenSideCannon.imageName
-        ) { [weak self] leftSideGreenCannonUnit in
-            guard let self = self else { return }
-            self.setupUnit(with: leftSideGreenCannonUnit)
-        }
+            nation: nation,
+            unitPosition: unitPosition,
+            unitId: unitId,
+            tag: tag,
+            unitImageName: unitImageName
+        )
+    }
+}
+// MARK: - 차 구성
+extension Units {
+    private func configureTankUnit(
+        nation: Tag,
+        unitPosition: UnitPosition,
+        unitId: UnitIdentifier,
+        tag: Tag,
+        unitImageName: UnitImageAssets
+    ) {
+        self.configureUnit(
+            nation: nation,
+            unitPosition: unitPosition,
+            unitId: unitId,
+            tag: tag,
+            unitImageName: unitImageName
+        )
+    }
+}
+
+// MARK: - 상 구성
+extension Units {
+    private func configureElephantUnit(
+        nation: Tag,
+        unitPosition: UnitPosition,
+        unitId: UnitIdentifier,
+        tag: Tag,
+        unitImageName: UnitImageAssets
+    ) {
+        self.configureUnit(
+            nation: nation,
+            unitPosition: unitPosition,
+            unitId: unitId,
+            tag: tag,
+            unitImageName: unitImageName
+        )
+    }
+}
+
+// MARK: - 마 구성
+extension Units {
+    private func configureHorseUnit(
+        nation: Tag,
+        unitPosition: UnitPosition,
+        unitId: UnitIdentifier,
+        tag: Tag,
+        unitImageName: UnitImageAssets
+    ) {
+        self.configureUnit(
+            nation: nation,
+            unitPosition: unitPosition,
+            unitId: unitId,
+            tag: tag,
+            unitImageName: unitImageName
+        )
+    }
+}
+
+// MARK: - 사 구성
+extension Units {
+    private func configureStaffUnit(
+        nation: Tag,
+        unitPosition: UnitPosition,
+        unitId: UnitIdentifier,
+        tag: Tag,
+        unitImageName: UnitImageAssets
+    ) {
+        self.configureUnit(
+            nation: nation,
+            unitPosition: unitPosition,
+            unitId: unitId,
+            tag: tag,
+            unitImageName: unitImageName
+        )
+    }
+}
+
+// MARK: - 왕 구성
+extension Units {
+    private func configureKing(
+        nation: Tag,
+        unitPosition: UnitPosition,
+        unitId: UnitIdentifier,
+        tag: Tag,
+        unitImageName: UnitImageAssets
+    ) {
+        self.configureUnit(
+            nation: nation,
+            unitPosition: unitPosition,
+            unitId: unitId,
+            tag: tag,
+            unitImageName: unitImageName
+        )
+    }
+}
+
+// MARK: - 포 구현
+extension Units {
+    private func setupLeftGreenCannon() {
+        configureCannonUnit(
+            nation: .green,
+            unitPosition: .left(x: 1, y: 7),
+            unitId: .leftSideGreenCannon,
+            tag: .green,
+            unitImageName: .greenSideCannon
+        )
+    }
+    private func setupRightGreenCannon() {
+        configureCannonUnit(
+            nation: .green,
+            unitPosition: .right(x: 7, y: 7),
+            unitId: .rightSideGreenCannon,
+            tag: .green,
+            unitImageName: .greenSideCannon
+        )
+    }
+    private func setupLeftRedCannon() {
+        configureCannonUnit(
+            nation: .red,
+            unitPosition: .left(x: 1, y: 2),
+            unitId: .leftSideRedCannon,
+            tag: .red,
+            unitImageName: .redSideCannon
+        )
+    }
+    private func setupRightRedCannon() {
+        configureCannonUnit(
+            nation: .red,
+            unitPosition: .right(x: 7, y: 2),
+            unitId: .rightSideRedCannon,
+            tag: .red,
+            unitImageName: .redSideCannon
+        )
+    }
+}
+
+// MARK: - 차 구현
+extension Units {
+    private func setupLeftGreenTank() {
+        configureTankUnit(
+            nation: .green,
+            unitPosition: .left(x: 0, y: 9),
+            unitId: .leftSideGreenTank,
+            tag: .green,
+            unitImageName: .greenSideTank
+        )
     }
     
-    private func configureRightGreenSideCannonUnit() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 7, y: 7),
-            unitId: UnitIdentifier.rightSideGreenCannon.id,
-            tag: 1,
-            unitImageName: UnitImageAssets.greenSideCannon.imageName
-        ) { [weak self] rightGreenSideCannonUnit in
-            guard let self = self else { return }
-            self.setupUnit(with: rightGreenSideCannonUnit)
-        }
+    private func setupRightGreenTank() {
+        configureTankUnit(
+            nation: .green,
+            unitPosition: .right(x: 8, y: 9),
+            unitId: .rightSideGreenTank,
+            tag: .green,
+            unitImageName: .greenSideTank
+        )
+    }
+    
+    private func setupLeftRedTank() {
+        configureTankUnit(
+            nation: .red,
+            unitPosition: .left(x: 0, y: 0),
+            unitId: .leftSideRedTank,
+            tag: .red,
+            unitImageName: .redSideTank
+        )
+    }
+    
+    private func setupRightRedTank() {
+        configureTankUnit(
+            nation: .red,
+            unitPosition: .right(x: 8, y: 0),
+            unitId: .rightSideRedTank,
+            tag: .red,
+            unitImageName: .redSideTank
+        )
     }
 }
-// MARK: - 빨간색 포 구성 및 구현
+
+// MARK: - 상 구현
 extension Units {
-    private func configureLeftRedSideCannonUnit() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 1, y: 2),
-            unitId: UnitIdentifier.leftSideRedCannon.id,
-            tag: 2,
-            unitImageName: UnitImageAssets.redSideCannon.imageName
-        ) { [weak self] leftRedSideCannonUnit in
-            guard let self = self else { return }
-            self.setupUnit(with: leftRedSideCannonUnit)
-        }
+    private func setupLeftGreenElephant() {
+        configureElephantUnit(
+            nation: .green,
+            unitPosition: .left(x: 1, y: 9),
+            unitId: .leftSideGreenElephant,
+            tag: .green,
+            unitImageName: .greenSideElephant
+        )
+    }
+    
+    private func setupRightGreenElephant() {
+        configureElephantUnit(
+            nation: .green,
+            unitPosition: .right(x: 7, y: 9),
+            unitId: .rightSideGreenElephant,
+            tag: .green,
+            unitImageName: .greenSideElephant
+        )
+    }
+    
+    private func setupLeftRedElephant() {
+        configureElephantUnit(
+            nation: .red,
+            unitPosition: .left(x: 1, y: 0),
+            unitId: .leftSideRedElephant,
+            tag: .red,
+            unitImageName: .redSideElephant
+        )
+    }
+    
+    private func setupRightRedElephant() {
+        configureElephantUnit(
+            nation: .red,
+            unitPosition: .right(x: 7, y: 0),
+            unitId: .rightSideRedElephant,
+            tag: .red,
+            unitImageName: .redSideElephant
+        )
+    }
+}
+
+// MARK: - 차 구현
+extension Units {
+    private func setupLeftGreenHorse() {
+        configureHorseUnit(
+            nation: .green,
+            unitPosition: .left(x: 2, y: 9),
+            unitId: .leftSideGreenHorse,
+            tag: .green,
+            unitImageName: .greenSideHorse
+        )
+    }
+    
+    private func setupRightGreenHorse() {
+        configureHorseUnit(
+            nation: .green,
+            unitPosition: .right(x: 6, y: 9),
+            unitId: .rightSideGreenHorse,
+            tag: .green,
+            unitImageName: .greenSideHorse
+        )
+    }
+    
+    private func setupLeftRedHorse() {
+        configureHorseUnit(
+            nation: .red,
+            unitPosition: .left(x: 2, y: 0),
+            unitId: .leftSideRedHorse,
+            tag: .red,
+            unitImageName: .redSideHorse
+        )
+    }
+    
+    private func setupRightRedHorse() {
+        configureHorseUnit(
+            nation: .red,
+            unitPosition: .right(x: 6, y: 0),
+            unitId: .rightSideRedHorse,
+            tag: .red,
+            unitImageName: .redSideHorse
+        )
+    }
+}
+
+// MARK: - 사 구현
+extension Units {
+    private func setupLeftGreenStaff() {
+        configureStaffUnit(
+            nation: .green,
+            unitPosition: .left(x: 3, y: 9),
+            unitId: .leftSideGreenStaff,
+            tag: .green,
+            unitImageName: .greenSideStaff
+        )
+    }
+    
+    private func setupRightGreenStaff() {
+        configureStaffUnit(
+            nation: .green,
+            unitPosition: .right(x: 5, y: 9),
+            unitId: .rightSideGreenStaff,
+            tag: .green,
+            unitImageName: .greenSideStaff
+        )
+    }
+    
+    private func setupLeftRedStaff() {
+        configureStaffUnit(
+            nation: .red,
+            unitPosition: .left(x: 3, y: 0),
+            unitId: .leftSideRedStaff,
+            tag: .red,
+            unitImageName: .redSideStaff
+        )
+    }
+    
+    private func setupRightRedStaff() {
+        configureStaffUnit(
+            nation: .red,
+            unitPosition: .right(x: 5, y: 0),
+            unitId: .rightSideRedStaff,
+            tag: .red,
+            unitImageName: .redSideStaff
+        )
+    }
+}
+
+extension Units {
+    private func setupGreenKing() {
+        configureKing(
+            nation: .green,
+            unitPosition: .down(x: 4, y: 8),
+            unitId: .greenKing,
+            tag: .green,
+            unitImageName: .greenKing
+        )
+    }
+    
+    private func setupRedKing() {
+        configureKing(
+            nation: .red,
+            unitPosition: .up(x: 4, y: 1),
+            unitId: .redKing,
+            tag: .red,
+            unitImageName: .redKing
+        )
+    }
+}
+
+
+
+// MARK: - 유닛 구성 및 구현 - 1
+extension Units {
+    private func configureUnit(
+        nation: Tag,
+        unitPosition: UnitPosition,
+        unitId: UnitIdentifier,
+        tag: Tag,
+        unitImageName: UnitImageAssets
+    ) {
+        let unit = self.makePiece(
+            nation: nation,
+            unitPosition: unitPosition,
+            unitId: unitId,
+            tag: tag,
+            unitImageName: unitImageName
+        )
         
-        self.configureDirection(
-            unitPosition: CGPoint(x: 1, y: 2),
-            unitId: UnitIdentifier.leftSideRedCannon.id,
-            tag: 2
-        ) { [weak self] direction in
-                guard let self = self else { return }
-                self.setupDirection(target: direction)
-            }
-    }
-    
-    private func configureRightRedSideCannonUnit() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 7, y: 2),
-            unitId: UnitIdentifier.rightSideRedCannon.id,
-            tag: 2,
-            unitImageName: UnitImageAssets.redSideCannon.imageName
-        ) { [weak self] rightRedSideCannonUnit in
-            guard let self = self else { return }
-            self.setupUnit(with: rightRedSideCannonUnit)
+        unit.setup { unit, direction in
+            self.setupUnit(with: unit)
+            self.setupDirection(target: direction)
         }
     }
 }
 
-// MARK: - 파란색 차 구성 및 구현
+// MARK: - 유닛 구성 및 구현 - 2
 extension Units {
-    private func configureLeftGreenSideTank() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 0, y: 9),
-            unitId: UnitIdentifier.leftSideGreenTank.id,
-            tag: 1,
-            unitImageName: UnitImageAssets.greenSideTank.imageName
-        ) { [weak self] gameUnit in
-            guard let self = self else { return }
-            self.setupUnit(with: gameUnit)
-        }
+    private func makePiece(
+        nation: Tag,
+        unitPosition: UnitPosition,
+        unitId: UnitIdentifier,
+        tag: Tag,
+        unitImageName: UnitImageAssets
+    ) -> Piece {
         
-        self.configureDirection(
-            unitPosition: CGPoint(x: 0, y: 9),
-            unitId: UnitIdentifier.leftSideGreenTank.id,
-            tag: 1) { [weak self] direction in
-                guard let self = self else { return }
-                self.setupDirection(target: direction)
-            }
-    }
-    
-    private func configureRightGreenSideTank() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 8, y: 9),
-            unitId: UnitIdentifier.rightSideRedTank.id,
-            tag: 1,
-            unitImageName: UnitImageAssets.greenSideTank.imageName
-        ) { [weak self] gameUnit in
-            guard let self = self else { return }
-            self.setupUnit(with: gameUnit)
+        switch nation {
+        case .green:
+            let greenPiece: Piece = Piece(
+                unitPosition: unitPosition,
+                unitId: unitId,
+                tag: tag,
+                unitImageName: unitImageName
+            )
+            
+            return greenPiece
+        case .red:
+            let redPiece: Piece = Piece(
+                unitPosition: unitPosition,
+                unitId: unitId,
+                tag: tag,
+                unitImageName: unitImageName
+            )
+            
+            return redPiece
         }
     }
 }
 
-// MARK: - 빨간색 차 구성 및 구현
-extension Units {
-    private func configureLeftRedSideVehicle() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 0, y: 0),
-            unitId: UnitIdentifier.leftSideRedTank.id,
-            tag: 2,
-            unitImageName: UnitImageAssets.redSideTank.imageName
-        ) { [weak self] leftRedSideCha in
-            guard let self = self else { return }
-            self.setupUnit(with: leftRedSideCha)
-        }
-    }
-    
-    private func configureRightRedSideVehicle() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 8, y: 0),
-            unitId: UnitIdentifier.rightSideRedTank.id,
-            tag: 2,
-            unitImageName: UnitImageAssets.redSideTank.imageName
-        ) { [weak self] rightRedSideCha in
-            guard let self = self else { return }
-            self.setupUnit(with: rightRedSideCha)
-        }
-    }
-}
-
-// MARK: - 파란색 상 구성 및 구현
-extension Units {
-    private func configureLeftGreenElephant() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 1, y: 9),
-            unitId: UnitIdentifier.leftSideGreenElephant.id,
-            tag: 1,
-            unitImageName: UnitImageAssets.greenSideElephant.imageName
-        ) { [weak self] leftGreenSideElephant in
-            guard let self = self else { return }
-            self.setupUnit(with: leftGreenSideElephant)
-        }
-    }
-    
-    private func configureRightGreenElephant() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 7, y: 9),
-            unitId: UnitIdentifier.rightSideGreenElephant.id,
-            tag: 1,
-            unitImageName: UnitImageAssets.greenSideElephant.imageName
-        ) { [weak self] rightGreenSideElephant in
-            guard let self = self else { return }
-            self.setupUnit(with: rightGreenSideElephant)
-        }
-    }
-}
-
-// MARK: - 빨간색 상 구성 및 구현
-extension Units {
-    private func configureLeftRedElephant() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 1, y: 0),
-            unitId: UnitIdentifier.leftSideRedElephant.id,
-            tag: 2,
-            unitImageName: UnitImageAssets.redSideElephant.imageName
-        ) { [weak self] leftRedSideElephant in
-            guard let self = self else { return }
-            self.setupUnit(with: leftRedSideElephant)
-        }
-    }
-    
-    private func configureRightRedElephant() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 7, y: 0),
-            unitId: UnitIdentifier.rightSideRedElephant.id,
-            tag: 2,
-            unitImageName: UnitImageAssets.redSideElephant.imageName
-        ) { [weak self] rightRedSideElephant in
-            guard let self = self else { return }
-            self.setupUnit(with: rightRedSideElephant)
-        }
-    }
-}
-
-// MARK: - 파란색 마 구성 및 구현
-extension Units {
-    private func configureLeftGreenHorse() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 2, y: 9),
-            unitId: UnitIdentifier.leftSideGreenHorse.id,
-            tag: 1,
-            unitImageName: UnitImageAssets.greenSideHorse.imageName
-        ) { [weak self] leftGreenSideHorse in
-            guard let self = self else { return }
-            self.setupUnit(with: leftGreenSideHorse)
-        }
-    }
-    
-    private func configureRightGreenHorse() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 6, y: 9),
-            unitId: UnitIdentifier.rightSideGreenHorse.id,
-            tag: 1,
-            unitImageName: UnitImageAssets.greenSideHorse.imageName
-        ) { [weak self] rightGreenSideHorse in
-            guard let self = self else { return }
-            self.setupUnit(with: rightGreenSideHorse)
-        }
-    }
-}
-
-// MARK: - 빨간색 마 구성 및 구현
-extension Units {
-    private func configureLeftRedHorse() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 2, y: 0),
-            unitId: UnitIdentifier.leftSideRedHorse.id,
-            tag: 2,
-            unitImageName: UnitImageAssets.redSideHorse.imageName
-        ) { [weak self] leftRedSideHorse in
-            guard let self = self else { return }
-            self.setupUnit(with: leftRedSideHorse)
-        }
-    }
-    
-    private func configureRightRedHorse() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 6, y: 0),
-            unitId: UnitIdentifier.rightSideRedHorse.id,
-            tag: 2,
-            unitImageName: UnitImageAssets.redSideHorse.imageName
-        ) { [weak self] rightRedSideHorse in
-            guard let self = self else { return }
-            self.setupUnit(with: rightRedSideHorse)
-        }
-    }
-}
-
-// MARK: - 파란색 사 구성 및 구현
-extension Units {
-    private func configureLeftGreenStaff() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 3, y: 9),
-            unitId: UnitIdentifier.leftSideGreenStaff.id,
-            tag: 1,
-            unitImageName: UnitImageAssets.greenSideStaff.imageName
-        ) { [weak self] leftGreenSideStaff in
-            guard let self = self else { return }
-            self.setupUnit(with: leftGreenSideStaff)
-        }
-    }
-    
-    private func configureRightGreenStaff() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 5, y: 9),
-            unitId: UnitIdentifier.rightSideGreenStaff.id,
-            tag: 1,
-            unitImageName: UnitImageAssets.greenSideStaff.imageName
-        ) { [weak self] rightGreenSideStaff in
-            guard let self = self else { return }
-            self.setupUnit(with: rightGreenSideStaff)
-        }
-    }
-}
-
-// MARK: - 빨간색 사 구성 및 구현
-extension Units {
-    private func configureLeftRedStaff() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 3, y: 0),
-            unitId: UnitIdentifier.leftSideRedStaff.id,
-            tag: 2,
-            unitImageName: UnitImageAssets.redSideStaff.imageName
-        ) { [weak self] leftRedSideStaff in
-            guard let self = self else { return }
-            self.setupUnit(with: leftRedSideStaff)
-        }
-    }
-    
-    private func configureRightRedStaff() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 5, y: 0),
-            unitId: UnitIdentifier.rightSideRedStaff.id,
-            tag: 2,
-            unitImageName: UnitImageAssets.redSideStaff.imageName
-        ) { [weak self] leftRedSideStaff in
-            guard let self = self else { return }
-            self.setupUnit(with: leftRedSideStaff)
-        }
-    }
-}
-
-// MARK: - 파란색 왕 구성 및 구현
-extension Units {
-    private func configureGreenKing() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 4, y: 8),
-            unitId: UnitIdentifier.greenKing.id,
-            tag: 1,
-            unitImageName: UnitImageAssets.greenKing.imageName
-        ) { [weak self] greenKing in
-            guard let self = self else { return }
-            self.setupUnit(with: greenKing)
-        }
-    }
-}
-
-// MARK: - 빨간색 왕 구성 및 구현
-extension Units {
-    private func configureRedKing() {
-        self.configureUnit(
-            unitPosition: CGPoint(x: 4, y: 1),
-            unitId: UnitIdentifier.redKing.id,
-            tag: 2,
-            unitImageName: UnitImageAssets.redKing.imageName
-        ) { [weak self] redKing in
-            guard let self = self else { return }
-            self.setupUnit(with: redKing)
-        }
-    }
-}

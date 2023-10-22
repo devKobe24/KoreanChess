@@ -14,6 +14,11 @@
 		CD0973582AE326F400195EDC /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0973572AE326F400195EDC /* Direction.swift */; };
 		CD09735C2AE327CA00195EDC /* Directioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD09735B2AE327CA00195EDC /* Directioning.swift */; };
 		CD0973612AE32F8400195EDC /* TankUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0973602AE32F8400195EDC /* TankUnit.swift */; };
+		CD0973652AE4813F00195EDC /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0973642AE4813F00195EDC /* Tag.swift */; };
+		CD0973672AE4925E00195EDC /* UnitPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0973662AE4925E00195EDC /* UnitPosition.swift */; };
+		CD0973692AE4AD1800195EDC /* CGPoint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0973682AE4AD1800195EDC /* CGPoint+.swift */; };
+		CD09736B2AE4AD6000195EDC /* UnitPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD09736A2AE4AD6000195EDC /* UnitPoint.swift */; };
+		CD09736D2AE4ADD100195EDC /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD09736C2AE4ADD100195EDC /* Piece.swift */; };
 		CD3D6FD92AE0871E003998A0 /* UnitImageAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3D6FD82AE0871E003998A0 /* UnitImageAssets.swift */; };
 		CD3D6FDE2AE08A32003998A0 /* NodeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3D6FDD2AE08A32003998A0 /* NodeName.swift */; };
 		CD3D6FE02AE0A35F003998A0 /* GameUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3D6FDF2AE0A35F003998A0 /* GameUnit.swift */; };
@@ -64,6 +69,11 @@
 		CD0973572AE326F400195EDC /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		CD09735B2AE327CA00195EDC /* Directioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Directioning.swift; sourceTree = "<group>"; };
 		CD0973602AE32F8400195EDC /* TankUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TankUnit.swift; sourceTree = "<group>"; };
+		CD0973642AE4813F00195EDC /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		CD0973662AE4925E00195EDC /* UnitPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPosition.swift; sourceTree = "<group>"; };
+		CD0973682AE4AD1800195EDC /* CGPoint+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+.swift"; sourceTree = "<group>"; };
+		CD09736A2AE4AD6000195EDC /* UnitPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPoint.swift; sourceTree = "<group>"; };
+		CD09736C2AE4ADD100195EDC /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		CD3D6FD82AE0871E003998A0 /* UnitImageAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitImageAssets.swift; sourceTree = "<group>"; };
 		CD3D6FDD2AE08A32003998A0 /* NodeName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeName.swift; sourceTree = "<group>"; };
 		CD3D6FDF2AE0A35F003998A0 /* GameUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUnit.swift; sourceTree = "<group>"; };
@@ -168,6 +178,8 @@
 				CDD962202ACBC0B300AECA1E /* Variables.swift */,
 				CD3D6FDF2AE0A35F003998A0 /* GameUnit.swift */,
 				CD0973572AE326F400195EDC /* Direction.swift */,
+				CD09736A2AE4AD6000195EDC /* UnitPoint.swift */,
+				CD09736C2AE4ADD100195EDC /* Piece.swift */,
 				CD3D6FD72AE08708003998A0 /* Enum */,
 			);
 			path = Model;
@@ -186,6 +198,8 @@
 				CD0973512AE28D6C00195EDC /* Size.swift */,
 				CD0973532AE31A8200195EDC /* BlockSideType.swift */,
 				CD0973552AE31B7000195EDC /* GuideBlockType.swift */,
+				CD0973642AE4813F00195EDC /* Tag.swift */,
+				CD0973662AE4925E00195EDC /* UnitPosition.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -220,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				CD3D6FE42AE0DCE2003998A0 /* Units+.swift */,
+				CD0973682AE4AD1800195EDC /* CGPoint+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -483,9 +498,13 @@
 				CD7F64652AE23E230064B605 /* FieldMetrix.swift in Sources */,
 				CDD9621F2ACBC05100AECA1E /* Units.swift in Sources */,
 				CD3D6FD92AE0871E003998A0 /* UnitImageAssets.swift in Sources */,
+				CD09736B2AE4AD6000195EDC /* UnitPoint.swift in Sources */,
+				CD0973672AE4925E00195EDC /* UnitPosition.swift in Sources */,
+				CD09736D2AE4ADD100195EDC /* Piece.swift in Sources */,
 				CD0973542AE31A8200195EDC /* BlockSideType.swift in Sources */,
 				CD0973502AE28BCB00195EDC /* GuideBlock.swift in Sources */,
 				CD3D6FE02AE0A35F003998A0 /* GameUnit.swift in Sources */,
+				CD0973652AE4813F00195EDC /* Tag.swift in Sources */,
 				CD0973612AE32F8400195EDC /* TankUnit.swift in Sources */,
 				CD3D6FE22AE0AD50003998A0 /* UnitIdentifier.swift in Sources */,
 				CDD961F42ACBBDF900AECA1E /* GameViewController.swift in Sources */,
@@ -503,6 +522,7 @@
 				CD09735C2AE327CA00195EDC /* Directioning.swift in Sources */,
 				CD7F64672AE240170064B605 /* Position.swift in Sources */,
 				CD3D6FE52AE0DCE2003998A0 /* Units+.swift in Sources */,
+				CD0973692AE4AD1800195EDC /* CGPoint+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
