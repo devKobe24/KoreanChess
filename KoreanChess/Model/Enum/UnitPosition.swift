@@ -11,6 +11,10 @@ enum UnitPosition {
     case down(x: Int, y: Int)
     case left(x: Int, y: Int)
     case right(x: Int, y: Int)
+    case leftDownCorner(x: Int, y: Int)
+    case rightDownCorner(x: Int, y: Int)
+    case leftUpCorner(x: Int, y: Int)
+    case rightUpCorner(x: Int, y: Int)
     
     var point: CGPoint {
         switch self {
@@ -21,6 +25,14 @@ enum UnitPosition {
         case .left(let x, let y):
             return UnitPoint(xAxis: x, yAxis: y).unitPostion
         case .right(let x, let y):
+            return UnitPoint(xAxis: x, yAxis: y).unitPostion
+        case .leftDownCorner(x: let x, y: let y):
+            return UnitPoint(xAxis: x, yAxis: y).unitPostion
+        case .rightDownCorner(x: let x, y: let y):
+            return UnitPoint(xAxis: x, yAxis: y).unitPostion
+        case .leftUpCorner(x: let x, y: let y):
+            return UnitPoint(xAxis: x, yAxis: y).unitPostion
+        case .rightUpCorner(x: let x, y: let y):
             return UnitPoint(xAxis: x, yAxis: y).unitPostion
         }
     }

@@ -8,13 +8,16 @@
 enum GuideBlockType {
     case possible
     case impossible
+    case none
     
-    var image: String {
+    var image: String? {
         switch self {
         case .possible:
             return "guide_G"
         case .impossible:
             return "guide_R"
+        case .none:
+            return nil
         }
     }
 }

@@ -54,7 +54,7 @@ final class Units {
         // MARK: - 파란색 왕
         setupGreenKing()
         // MARK: - 빨간색 왕
-        setupRedKing()
+//        setupRedKing()
     }
 }
 // MARK: - 졸 구성 및 구현

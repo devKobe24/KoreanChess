@@ -17,18 +17,18 @@ struct Variables {
 }
 
 extension Variables {
-    static func getUnitTag(unitDirections: [Direction], unitPosition: CGPoint) -> Int {
-        var unitTag: Int = 0
+    static func getUnitDirectionTag(unitDirections: [Direction], unitPosition: CGPoint) -> Int {
+        var unitDirectionTag: Int = 0
 
         for unitDirection in unitDirections {
             switch unitDirection.unitPosition {
             case unitPosition:
-                unitTag = unitDirection.tag
+                unitDirectionTag = unitDirection.tag
                 break
             default:
                 break
             }
         }
-        return unitTag
+        return unitDirectionTag
     }
 }

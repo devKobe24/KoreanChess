@@ -19,6 +19,8 @@ final class GuideBlock {
         block.size = CGSize(width: width, height: height)
         
         let movableImage = movable ? GuideBlockType.possible.image : GuideBlockType.impossible.image
+        guard let movableImage = movableImage else { return }
+        
         block.texture = SKTexture(imageNamed: movableImage)
         block.alpha = 0.5
         block.zPosition = 1
