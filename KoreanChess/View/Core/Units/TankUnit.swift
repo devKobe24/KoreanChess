@@ -90,8 +90,8 @@ final class TankUnit: TankUnitProtocol {
         moveRightTankUnit(unitTag: unitTag, unitId: unitId, unitXpoint: unitXpoint, unitYpoint: unitYpoint)
         moveUpTankUnit(unitTag: unitTag, unitId: unitId, unitXpoint: unitXpoint, unitYpoint: unitYpoint)
         moveDownTankUnit(unitTag: unitTag, unitId: unitId, unitXpoint: unitXpoint, unitYpoint: unitYpoint)
+        
         moveDiagonalTankUnit()
-        moveDigonalCase(type: .leftDownToRightUp)
     }
 }
 
@@ -203,22 +203,11 @@ extension TankUnit {
 
 extension TankUnit {
     private func moveDiagonalTankUnit() {
- 
         
-        
-        
-        
-        
-        let greenSideRightDownCornerPoint = UnitPosition.rightDownCorner(x: 5, y: 9).point
-        let redSideRightDownCornerPoint = UnitPosition.rightDownCorner(x: 5, y: 2).point
-        
-        let greenSideLeftUpCornerPoint = UnitPosition.leftUpCorner(x: 3, y: 7).point
-        let redSideLeftUpCornerPoint = UnitPosition.leftUpCorner(x: 3, y: 0).point
-        
-        let greenSideRightUpCornerPoint = UnitPosition.rightUpCorner(x: 5, y: 7).point
-        let redSideRightUpCornerPoint = UnitPosition.rightUpCorner(x: 5, y: 0).point
-        
-       
+        moveDigonalCase(type: .leftDownToRightUp)
+        moveDigonalCase(type: .rightDownToLeftUp)
+        moveDigonalCase(type: .leftUpToRightDown)
+        moveDigonalCase(type: .rightUpToLeftDown)
     }
 }
 
@@ -226,11 +215,46 @@ extension TankUnit {
     private func moveDigonalCase(type: DigonalDirectionCase) {
         switch type {
         case .leftDownToRightUp:
-            return moveLeftDownToRightUpDigonalMove(unitTag: self.unitTag, unitId: self.unitId, unitXpoint: unitXpoint, unitYpoint: unitYpoint)
+            return leftDownToRightUpDigonalMove(
+                unitTag: unitTag,
+                unitId: unitId,
+                unitXpoint: unitXpoint,
+                unitYpoint: unitYpoint
+            )
+        case .rightDownToLeftUp:
+            return rightDownToLeftUpDigonalMove(
+                unitTag: unitTag,
+                unitId: unitId,
+                unitXpoint: unitXpoint,
+                unitYpoint: unitYpoint
+            )
+        case .leftUpToRightDown:
+            return leftUpToRightDownDigonalMove(
+                unitTag: unitTag,
+                unitId: unitId,
+                unitXpoint: unitXpoint,
+                unitYpoint: unitYpoint
+            )
+        case .rightUpToLeftDown:
+            return rightUpToLeftDownDigonalMove(
+                unitTag: unitTag,
+                unitId: unitId,
+                unitXpoint: unitXpoint,
+                unitYpoint: unitYpoint
+            )
+        case .center:
+            return centerDigonalMove(
+                unitTag: unitTag,
+                unitId: unitId,
+                unitXpoint: unitXpoint,
+                unitYpoint: unitYpoint
+            )
         }
     }
-    
-    private func moveLeftDownToRightUpDigonalMove(unitTag: Int, unitId: String, unitXpoint: Int, unitYpoint: Int) {
+}
+
+extension TankUnit {
+    private func leftDownToRightUpDigonalMove(unitTag: Int, unitId: String, unitXpoint: Int, unitYpoint: Int) {
         let greenSideLeftDownCornerPoint = DigonalDirectionCase.leftDownToRightUp.position.greenSide
         let redSideLeftDownCornerPoint = DigonalDirectionCase.leftDownToRightUp.position.redSide
         
@@ -250,6 +274,130 @@ extension TankUnit {
                     Variables.unitDirections.append(Direction(unitPosition: currentUnitPosition, unitId: unitId, tag: unitTag))
                     break
                 } else if tankUnitTag != 0 && tankUnitTag == unitTag {
+                    break
+                }
+            }
+        }
+    }
+}
+
+extension TankUnit {
+    private func rightDownToLeftUpDigonalMove(unitTag: Int, unitId: String, unitXpoint: Int, unitYpoint: Int) {
+        let greenSideRightDownCornerPoint = DigonalDirectionCase.rightDownToLeftUp.position.greenSide
+        let redSideRightDownCornerPoint = DigonalDirectionCase.rightDownToLeftUp.position.redSide
+        
+        if greenSideRightDownCornerPoint == unit.unitPosition || redSideRightDownCornerPoint == unit.unitPosition {
+            for checkPoint in 1..<3 {
+                let currentUnitPosition = CGPoint(x: unitXpoint - checkPoint, y: unitYpoint - checkPoint)
+                
+                let tankUnitTag = Variables.getUnitDirectionTag(
+                    unitDirections: unitDirections,
+                    unitPosition: currentUnitPosition
+                )
+                if tankUnitTag == 0 {
+                    guideBlock.configureGuideBlock(position: currentUnitPosition, movable: true)
+                    Variables.unitDirections.append(Direction(unitPosition: currentUnitPosition, unitId: unitId, tag: unitTag))
+                } else if tankUnitTag != 0 && tankUnitTag != unitTag {
+                    guideBlock.configureGuideBlock(position: currentUnitPosition, movable: false)
+                    Variables.unitDirections.append(Direction(unitPosition: currentUnitPosition, unitId: unitId, tag: unitTag))
+                    break
+                } else if tankUnitTag != 0 && tankUnitTag == unitTag {
+                    break
+                }
+            }
+        }
+    }
+}
+
+extension TankUnit {
+    private func leftUpToRightDownDigonalMove(unitTag: Int, unitId: String, unitXpoint: Int, unitYpoint: Int) {
+        let greenSideLeftUpCornerPoint = DigonalDirectionCase.leftUpToRightDown.position.greenSide
+        let redSideLeftUpCornerPoint = DigonalDirectionCase.leftUpToRightDown.position.redSide
+        
+        if greenSideLeftUpCornerPoint == unit.unitPosition || redSideLeftUpCornerPoint == unit.unitPosition {
+            for checkPoint in 1..<3 {
+                let currentUnitPosition = CGPoint(x: unitXpoint - checkPoint, y: unitYpoint + checkPoint)
+                
+                let tankUnitTag = Variables.getUnitDirectionTag(
+                    unitDirections: unitDirections,
+                    unitPosition: currentUnitPosition
+                )
+                if tankUnitTag == 0 {
+                    guideBlock.configureGuideBlock(position: currentUnitPosition, movable: true)
+                    Variables.unitDirections.append(Direction(unitPosition: currentUnitPosition, unitId: unitId, tag: unitTag))
+                } else if tankUnitTag != 0 && tankUnitTag != unitTag {
+                    guideBlock.configureGuideBlock(position: currentUnitPosition, movable: false)
+                    Variables.unitDirections.append(Direction(unitPosition: currentUnitPosition, unitId: unitId, tag: unitTag))
+                    break
+                } else if tankUnitTag != 0 && tankUnitTag == unitTag {
+                    break
+                }
+            }
+        }
+    }
+}
+
+extension TankUnit {
+    private func rightUpToLeftDownDigonalMove(unitTag: Int, unitId: String, unitXpoint: Int, unitYpoint: Int) {
+        let greenSideRightUpCornerPoint = DigonalDirectionCase.rightUpToLeftDown.position.greenSide
+        let redSideRightUpCornerPoint = DigonalDirectionCase.rightUpToLeftDown.position.redSide
+        
+        if greenSideRightUpCornerPoint == unit.unitPosition || redSideRightUpCornerPoint == unit.unitPosition {
+            for checkPoint in 1..<3 {
+                let currentUnitPosition = CGPoint(x: unitXpoint - checkPoint, y: unitYpoint + checkPoint)
+                
+                let tankUnitTag = Variables.getUnitDirectionTag(
+                    unitDirections: unitDirections,
+                    unitPosition: currentUnitPosition
+                )
+                if tankUnitTag == 0 {
+                    guideBlock.configureGuideBlock(position: currentUnitPosition, movable: true)
+                    Variables.unitDirections.append(Direction(unitPosition: currentUnitPosition, unitId: unitId, tag: unitTag))
+                } else if tankUnitTag != 0 && tankUnitTag != unitTag {
+                    guideBlock.configureGuideBlock(position: currentUnitPosition, movable: false)
+                    Variables.unitDirections.append(Direction(unitPosition: currentUnitPosition, unitId: unitId, tag: unitTag))
+                    break
+                } else if tankUnitTag != 0 && tankUnitTag == unitTag {
+                    break
+                }
+            }
+        }
+    }
+}
+
+extension TankUnit {
+    private func centerDigonalMove(unitTag: Int, unitId: String, unitXpoint: Int, unitYpoint: Int) {
+        let greenSideCenterPoint = DigonalDirectionCase.center.position.greenSide
+        let redSideCenterPoint = DigonalDirectionCase.center.position.redSide
+        
+        if greenSideCenterPoint == unit.unitPosition || redSideCenterPoint == unit.unitPosition {
+            for checkPoint in 1...4 {
+                switch checkPoint {
+                case 1:
+                    let moveRightUp = PalaceMove.tankUnit(
+                        x: CGFloat(unitXpoint + 1),
+                        y: CGFloat(unitYpoint - 1)
+                    ).direction.movePoint
+                    break
+                case 2:
+                    let moveLeftUp = PalaceMove.tankUnit(
+                        x: CGFloat(unitXpoint - 1),
+                        y: CGFloat(unitYpoint - 1)
+                    ).direction.movePoint
+                    break
+                case 3:
+                    let moveRightDown = PalaceMove.tankUnit(
+                        x: CGFloat(unitXpoint + 1),
+                        y: CGFloat(unitYpoint + 1)
+                    ).direction.movePoint
+                    break
+                case 4:
+                    let moveLeftDown = PalaceMove.tankUnit(
+                        x: CGFloat(unitXpoint - 1),
+                        y: CGFloat(unitYpoint + 1)
+                    ).direction.movePoint
+                    break
+                default:
                     break
                 }
             }
