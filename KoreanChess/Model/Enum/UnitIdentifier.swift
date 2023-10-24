@@ -6,16 +6,16 @@
 //
 
 enum UnitIdentifier {
-    case greenSideSolider
-    case redSideSolider
+    case greenSideSolider(Int)
+    case redSideSolider(Int)
     case leftSideGreenCannon
     case rightSideGreenCannon
     case leftSideRedCannon
     case rightSideRedCannon
-    case leftSideGreenVehicle
-    case rightSideGreenVehicle
-    case leftSideRedVehicle
-    case rightSideRedVehicel
+    case leftSideGreenTank
+    case rightSideGreenTank
+    case leftSideRedTank
+    case rightSideRedTank
     case leftSideGreenElephant
     case rightSideGreenElephant
     case leftSideRedElephant
@@ -31,12 +31,12 @@ enum UnitIdentifier {
     case greenKing
     case redKing
     
-    var name: String {
+    var id: String {
         switch self {
-        case .greenSideSolider:
-            return "zol_g"
-        case .redSideSolider:
-            return "zol_r"
+        case .greenSideSolider(let id):
+            return "zol_g\(id)"
+        case .redSideSolider(let id):
+            return "zol_r\(id)"
         case .leftSideGreenCannon:
             return "po_g1"
         case .rightSideGreenCannon:
@@ -45,13 +45,13 @@ enum UnitIdentifier {
             return "po_r1"
         case .rightSideRedCannon:
             return "po_r2"
-        case .leftSideGreenVehicle:
+        case .leftSideGreenTank:
             return "cha_g1"
-        case .rightSideGreenVehicle:
+        case .rightSideGreenTank:
             return "cha_g2"
-        case .leftSideRedVehicle:
+        case .leftSideRedTank:
             return "cha_r1"
-        case .rightSideRedVehicel:
+        case .rightSideRedTank:
             return "cha_r2"
         case .leftSideGreenElephant:
             return "sang_g1"

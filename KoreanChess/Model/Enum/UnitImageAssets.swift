@@ -10,8 +10,8 @@ enum UnitImageAssets {
     case redSideSolider
     case greenSideCannon
     case redSideCannon
-    case greenSideCha
-    case redSideCha
+    case greenSideTank
+    case redSideTank
     case greenSideElephant
     case redSideElephant
     case greenSideHorse
@@ -21,7 +21,7 @@ enum UnitImageAssets {
     case greenKing
     case redKing
     
-    var image: String {
+    var imageName: String {
         switch self {
         case .greenSideSolider:
             return "Green_Zol"
@@ -31,18 +31,18 @@ enum UnitImageAssets {
             return "Green_Po"
         case .redSideCannon:
             return "Red_Po"
-        case .greenSideCha:
-            return "Green_Cha"
-        case .redSideCha:
-            return "Red_Cha"
+        case .greenSideTank:
+            return "Green_Tank"
+        case .redSideTank:
+            return "Red_Tank"
         case .greenSideElephant:
             return "Green_Sang"
         case .redSideElephant:
             return "Red_Sang"
         case .greenSideHorse:
-            return "Green_Sang"
+            return "Green_Ma"
         case .redSideHorse:
-            return "Red_Sang"
+            return "Red_Ma"
         case .greenSideStaff:
             return "Green_Sa"
         case .redSideStaff:

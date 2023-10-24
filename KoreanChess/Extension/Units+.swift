@@ -8,22 +8,22 @@
 import SpriteKit
 
 extension Units: Initializerable, UnitConfigurable {
-    func configureUnit(
-        unitPosition: CGPoint,
-        unitName: String,
-        tag: Int,
-        unitImageName: String,
-        completion: @escaping (GameUnit) -> Void
-    ) {
-        let unit = GameUnit(
-            unitPosition: unitPosition,
-            unitName: unitName,
-            tag: tag,
-            unitImageName: unitImageName
-        )
-        
-        completion(unit)
-    }
+//    func configureUnit(
+//        unitPosition: CGPoint,
+//        unitId: String,
+//        tag: Int,
+//        unitImageName: String,
+//        completion: @escaping (GameUnit) -> Void
+//    ) {
+//        let unit = GameUnit(
+//            unitPosition: unitPosition,
+//            unitId: unitId,
+//            tag: tag,
+//            unitImageName: unitImageName
+//        )
+//        
+//        completion(unit)
+//    }
     
     func setupUnit(with gameUnit: GameUnit) {
         Variables.allUnits.append(gameUnit)
@@ -36,23 +36,41 @@ extension Units: Initializerable, UnitConfigurable {
             let unitXposition = Int(unit.unitPosition.x)
             let unitYposition = Int(unit.unitPosition.y)
             
-            guard let startXposition = Variables.startX else { return }
-            guard let startYposition = Variables.startY else { return }
+            guard let startXposition = Position.startX.value else { return }
+            guard let startYposition = Position.startY.value else { return }
             
-            guard let unitSpacing = Variables.unitSpacing else { return }
+            guard let unitSpacing = Position.unitSpacing.value else { return }
             
             let xPosition = (startXposition + (unitSpacing * unitXposition))
             let yPosition = (startYposition - (unitSpacing * unitYposition))
             
-            guard let nodeWidthAndHeight = Variables.unitSpacing else { return }
+            guard let nodeWidthAndHeight = Position.unitSpacing.value else { return }
             
             unitNode.position = CGPoint(x: xPosition, y: yPosition)
             unitNode.size = CGSize(width: nodeWidthAndHeight, height: nodeWidthAndHeight)
-            unitNode.name = unit.unitName
+            unitNode.name = unit.unitId
             unitNode.zPosition = 0
             
             Variables.scene.addChild(unitNode)
         }
+    }
+    
+    func configureDirection(
+        unitPosition: CGPoint,
+        unitId: String,
+        tag: Int,
+        completion: @escaping (Direction) -> Void
+    ) {
+        let direction = Direction(
+            unitPosition: unitPosition,
+            unitId: unitId,
+            tag: tag
+        )
+        completion(direction)
+    }
+    
+    func setupDirection(target direction: Direction) {
+        Variables.unitDirections.append(direction)
     }
     
     func configureBackgroundImage() {
@@ -74,10 +92,10 @@ extension Units: Initializerable, UnitConfigurable {
     func configureGameFieldImage() {
         let gameFieldImage = SKSpriteNode(imageNamed: BackgroundImageAssets.field.image)
         
-        guard let spacing = Variables.unitSpacing else { return }
-        guard let startYposition = Variables.startY else { return }
-        let width = spacing * Variables.row
-        let height = spacing * Variables.column
+        guard let spacing = Position.unitSpacing.value else { return }
+        guard let startYposition = Position.startY.value else { return }
+        let width = spacing * FieldMetrix.row.value
+        let height = spacing * FieldMetrix.column.value
         let xPosition = (spacing / 2)
         let yPosition = (startYposition + (spacing / 2))
         

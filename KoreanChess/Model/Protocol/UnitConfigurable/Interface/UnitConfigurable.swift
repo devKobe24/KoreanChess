@@ -8,11 +8,11 @@
 import Foundation
 
 protocol UnitConfigurable {
-    func configureUnit(
-        unitPosition: CGPoint,
-        unitName: String,
-        tag: Int,
-        unitImageName: String,
-        completion: @escaping (GameUnit) -> Void
-    )
+//    func configureUnit(
+//        unitPosition: CGPoint,
+//        unitId: String,
+//        tag: Int,
+//        unitImageName: String,
+//        completion: @escaping (GameUnit) -> Void
+//    )
 }

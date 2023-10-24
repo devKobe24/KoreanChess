@@ -9,7 +9,7 @@ import Foundation
 
 struct GameUnit: GameUnitMakerable {
     var unitPosition: CGPoint = CGPoint()
-    var unitName: String = String()
+    var unitId: String = String()
     var tag: Int = Int()
     var unitImageName: String = String()
 }
