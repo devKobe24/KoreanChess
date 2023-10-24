@@ -203,11 +203,11 @@ extension TankUnit {
 
 extension TankUnit {
     private func moveDiagonalTankUnit() {
-        
         moveDigonalCase(type: .leftDownToRightUp)
         moveDigonalCase(type: .rightDownToLeftUp)
         moveDigonalCase(type: .leftUpToRightDown)
         moveDigonalCase(type: .rightUpToLeftDown)
+        moveDigonalCase(type: .center)
     }
 }
 
@@ -374,28 +374,84 @@ extension TankUnit {
             for checkPoint in 1...4 {
                 switch checkPoint {
                 case 1:
-                    let moveRightUp = PalaceMove.tankUnit(
+                    let rightUpMovePosition = PalaceMove.tankUnit(
                         x: CGFloat(unitXpoint + 1),
                         y: CGFloat(unitYpoint - 1)
                     ).direction.movePoint
+                    
+                    let tankUnitTag = Variables.getUnitDirectionTag(
+                        unitDirections: unitDirections,
+                        unitPosition: rightUpMovePosition
+                    )
+                    
+                    if tankUnitTag == 0 {
+                        guideBlock.configureGuideBlock(position: rightUpMovePosition, movable: true)
+                        Variables.unitDirections.append(Direction(unitPosition: rightUpMovePosition, unitId: unitId, tag: unitTag))
+                    } else if tankUnitTag != 0 && tankUnitTag != unitTag {
+                        guideBlock.configureGuideBlock(position: rightUpMovePosition, movable: false)
+                        Variables.unitDirections.append(Direction(unitPosition: rightUpMovePosition, unitId: unitId, tag: unitTag))
+                    }
+                    
                     break
                 case 2:
-                    let moveLeftUp = PalaceMove.tankUnit(
+                    let leftUpMovePosition = PalaceMove.tankUnit(
                         x: CGFloat(unitXpoint - 1),
                         y: CGFloat(unitYpoint - 1)
                     ).direction.movePoint
+                    
+                    let tankUnitTag = Variables.getUnitDirectionTag(
+                        unitDirections: unitDirections,
+                        unitPosition: leftUpMovePosition
+                    )
+                    
+                    if tankUnitTag == 0 {
+                        guideBlock.configureGuideBlock(position: leftUpMovePosition, movable: true)
+                        Variables.unitDirections.append(Direction(unitPosition: leftUpMovePosition, unitId: unitId, tag: unitTag))
+                    } else if tankUnitTag != 0 && tankUnitTag != unitTag {
+                        guideBlock.configureGuideBlock(position: leftUpMovePosition, movable: false)
+                        Variables.unitDirections.append(Direction(unitPosition: leftUpMovePosition, unitId: unitId, tag: unitTag))
+                    }
+                    
                     break
                 case 3:
-                    let moveRightDown = PalaceMove.tankUnit(
+                    let rightDownMovePosition = PalaceMove.tankUnit(
                         x: CGFloat(unitXpoint + 1),
                         y: CGFloat(unitYpoint + 1)
                     ).direction.movePoint
+                    
+                    let tankUnitTag = Variables.getUnitDirectionTag(
+                        unitDirections: unitDirections,
+                        unitPosition: rightDownMovePosition
+                    )
+                    
+                    if tankUnitTag == 0 {
+                        guideBlock.configureGuideBlock(position: rightDownMovePosition, movable: true)
+                        Variables.unitDirections.append(Direction(unitPosition: rightDownMovePosition, unitId: unitId, tag: unitTag))
+                    } else if tankUnitTag != 0 && tankUnitTag != unitTag {
+                        guideBlock.configureGuideBlock(position: rightDownMovePosition, movable: false)
+                        Variables.unitDirections.append(Direction(unitPosition: rightDownMovePosition, unitId: unitId, tag: unitTag))
+                    }
+                    
                     break
                 case 4:
-                    let moveLeftDown = PalaceMove.tankUnit(
+                    let leftDownMovePosition = PalaceMove.tankUnit(
                         x: CGFloat(unitXpoint - 1),
                         y: CGFloat(unitYpoint + 1)
                     ).direction.movePoint
+                    
+                    let tankUnitTag = Variables.getUnitDirectionTag(
+                        unitDirections: unitDirections,
+                        unitPosition: leftDownMovePosition
+                    )
+                    
+                    if tankUnitTag == 0 {
+                        guideBlock.configureGuideBlock(position: leftDownMovePosition, movable: true)
+                        Variables.unitDirections.append(Direction(unitPosition: leftDownMovePosition, unitId: unitId, tag: unitTag))
+                    } else if tankUnitTag != 0 && tankUnitTag != unitTag {
+                        guideBlock.configureGuideBlock(position: leftDownMovePosition, movable: false)
+                        Variables.unitDirections.append(Direction(unitPosition: leftDownMovePosition, unitId: unitId, tag: unitTag))
+                    }
+
                     break
                 default:
                     break

@@ -17,7 +17,7 @@ class GameScene: SKScene {
         
         _ = TankUnit(
             unit: GameUnit(
-                unitPosition: CGPoint(x: 5, y: 0),
+                unitPosition: CGPoint(x: 4, y: 1),
                 unitId: UnitIdentifier.rightSideGreenTank.id,
                 tag: 1,
                 unitImageName: UnitImageAssets.greenSideTank.imageName
